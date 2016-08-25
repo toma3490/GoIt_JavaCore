@@ -3,63 +3,22 @@ package module_2.homework;
 import java.util.Arrays;
 
 public class Task_2 {
-    static int balancesSum(int[] balances) {
-        int sum = 0;
-        for (int balance : balances) {
-            if (balance > 1000 && balance < 5000) {
-                sum += balance;
-            }
-        }
-        return sum;
-    }
 
-    static String[] getOwnerNames(int[] balances, String[] names) {
-        int ownersCount = 0;
-        for (int balance : balances) {
-            if (balance > 1000) ownersCount++;
-        }
-
-        String[] result = new String[ownersCount];
-
-        int index = 0;
-        for (int i = 0; i < balances.length; i++) {
-            if (balances[i] > 1000) {
-                result[index] = names[i];
-                index++;
-            }
-        }
-
-        return result;
-    }
-
-    //HOMEWORK 2.1
     static double withdrawBalance(double balance, double withdrawal) {
-
-
-        return 0;
+        return balance - withdrawal - withdrawal * 0.05;
     }
-
-    //HOMEWORK 2.2
-    static double withdrawBalance(String ownerName, double withdrawal) {
-
-
-        return 0;
-    }
-
-    //HOMEWORK 2.3
-    static double fundBalance(String ownerName, double fund) {
-
-
-        return 0;
-    }
-
 
     public static void main(String[] args) {
 
-        int[] balances = {1200, 250, 2000, 500, 3200};
-        String[] ownerNames = {"Jane", "Ann", "Jack", "Oww", "Lane"};
+        double balance = 500;
+        double withdrawal = 475;
 
-        int[] balances1 = {200, 200, 500, 4000, 30};
-        System.out.println(Arrays.toString(getOwnerNames(balances, ownerNames)));
+        if (withdrawBalance(balance, withdrawal) > 0) {
+            System.out.println("OK 0.05 " + withdrawBalance(balance, withdrawal));
+        } else {
+            System.out.println("NO");
+        }
     }
 }
+
+
