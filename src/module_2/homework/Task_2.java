@@ -1,7 +1,5 @@
 package module_2.homework;
 
-import java.util.Arrays;
-
 public class Task_2 {
 
     static double withdrawBalance(double balance, double withdrawal) {
