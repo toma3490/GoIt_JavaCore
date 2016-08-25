@@ -24,7 +24,7 @@ public class Task_1 {
 
     //    Min
     static int min(int[] array){
-        int min = 0;
+        int min = array[0];
         for (int arrayItem : array){
             min = Math.min(arrayItem, min);
         }
@@ -32,7 +32,7 @@ public class Task_1 {
     }
 
     static double min(double[] array){
-        double min = 0;
+        double min = array[0];
         for (double arrayItem : array){
             min = Math.min(arrayItem, min);
         }
@@ -41,7 +41,7 @@ public class Task_1 {
 
     //    Max
     static int max(int[] array){
-        int max = 0;
+        int max = array[0];
         for (int arrayItem : array){
             max = Math.max(arrayItem, max);
         }
@@ -49,7 +49,7 @@ public class Task_1 {
     }
 
     static double max(double[] array){
-        double max = 0;
+        double max = array[0];
         for (double arrayItem : array){
             max = Math.max(arrayItem, max);
         }
@@ -58,13 +58,11 @@ public class Task_1 {
 
     //    MaxPositive
     static int maxPositive(int[] array){
-        int maxPositive = max(array);
-        return maxPositive;
+        return max(array);
     }
 
     static double maxPositive(double[] array){
-        double maxPositive = max(array);
-        return maxPositive;
+        return max(array);
     }
 
     //    Multiplication
@@ -86,13 +84,11 @@ public class Task_1 {
 
     //    Modulus
     static int modulus(int[] array){
-        int modulus = array[0] % array[array.length-1];
-        return modulus;
+        return array[0] % array[array.length-1];
     }
 
     static double modulus(double[] array){
-        double modulus = array[0] % array[array.length-1];
-        return modulus;
+        return array[0] % array[array.length-1];
     }
 
     //    SecondLargestElement
@@ -151,9 +147,13 @@ public class Task_1 {
         System.out.println();
 
 //        Modulus of first and last array's element
-        System.out.println("Modulus of first and last arrayInt element = " + modulus(arrayInt));
-        System.out.print("Modulus of first and last arrayDouble element = ");
-        System.out.format("%.4f%n", modulus(arrayDouble));
+        if(arrayInt[arrayInt.length-1] != 0){
+            System.out.println("Modulus of first and last arrayInt element = " + modulus(arrayInt));
+        }else {System.out.println("Division by 0!!!");}
+        if(arrayDouble[arrayDouble.length-1] != 0){
+            System.out.print("Modulus of first and last arrayDouble element = ");
+            System.out.format("%.4f%n", modulus(arrayDouble));
+        }else {System.out.println("Division by 0!!!");}
         System.out.println();
 
 //        Second largest element
