@@ -2,20 +2,25 @@ package module_2.homework;
 
 public class Task_2 {
 
-    static double withdrawBalance(double balance, double withdrawal) {
-        return balance - withdrawal - withdrawal * 0.05;
+    static void balanceChecker(double balance, double withdrawal, double commission){
+        if (withdrawBalance(balance, withdrawal, commission) > 0){
+            System.out.println("OK " +  commission + " " + withdrawBalance(balance, withdrawal, commission));
+        }else {
+            System.out.println("NO");
+        }
+    }
+
+    static double withdrawBalance(double balance, double withdrawal, double commission) {
+        return balance - withdrawal - withdrawal * commission;
     }
 
     public static void main(String[] args) {
 
         double balance = 500;
         double withdrawal = 475;
+        double commission = 0.05;
 
-        if (withdrawBalance(balance, withdrawal) > 0) {
-            System.out.println("OK 0.05 " + withdrawBalance(balance, withdrawal));
-        } else {
-            System.out.println("NO");
-        }
+        balanceChecker(balance, withdrawal, commission);
     }
 }
 
