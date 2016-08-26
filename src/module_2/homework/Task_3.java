@@ -9,11 +9,17 @@ public class Task_3 {
         for (String name : ownerNames) {
             if(ownerName.equals(name))flag = true;
         }
-        if (flag) withdrawBalance(ownerName, withdrawal);
+        if (flag) balanceChecker(ownerName, withdrawal);
         else System.out.println("Name is incorrect!!");
     }
 
-    static void withdrawBalance(String ownerName, double withdrawal) {
+    static void balanceChecker(String ownerName, double withdrawal){
+        if(withdrawBalance(ownerName, withdrawal) >= 0){
+            System.out.println(ownerName + " " + withdrawal + " " + withdrawBalance(ownerName, withdrawal));
+        }else System.out.println(ownerName + " NO");
+    }
+
+    static double withdrawBalance(String ownerName, double withdrawal) {
         int index = 0;
         for (int i = 0; i <= ownerNames.length-1; i++) {
             if (ownerName.equals(ownerNames[i])){
@@ -21,10 +27,7 @@ public class Task_3 {
             }
         }
         int balance = balances[index];
-        double balanceAfterWithdrawal = balance - withdrawal - withdrawal * 0.05;
-        if(balanceAfterWithdrawal >= 0){
-            System.out.println(ownerName + " " + withdrawal + " " + balanceAfterWithdrawal);
-        }else System.out.println(ownerName + " NO");
+        return balance - withdrawal - withdrawal * 0.05;
     }
 
     public static void main(String[] args) {
