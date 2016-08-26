@@ -16,7 +16,7 @@ public class Task_4 {
     static void fundChecker(String ownerName, double fund){
         boolean flag = false;
         if(fund > 0) flag = true;
-        if (flag) System.out.println(fundBalance(ownerName, fund));
+        if (flag) System.out.println(ownerName + " " + fundBalance(ownerName, fund));
         else System.out.println("Incorrect fund");
     }
 
