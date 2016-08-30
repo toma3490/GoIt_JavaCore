@@ -94,7 +94,7 @@ public class Task_1 {
     //    SecondLargestElement
     static int getSecondLargestElement(int[] array){
         int max = max(array);
-        int secondLargest = 0;
+        int secondLargest = array[0];
         for (int arrayItem : array){
             if(arrayItem > secondLargest && arrayItem < max) secondLargest = arrayItem;
         }
