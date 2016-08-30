@@ -103,7 +103,7 @@ public class Task_1 {
 
     static double getSecondLargestElement(double[] array){
         double max = max(array);
-        double secondLargest = 0;
+        double secondLargest = array[0];
         for (double arrayItem : array){
             if(arrayItem > secondLargest && arrayItem < max) secondLargest = arrayItem;
         }
