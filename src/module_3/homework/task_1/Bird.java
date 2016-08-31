@@ -1,15 +1,15 @@
 package module_3.homework.task_1;
 
 public class Bird extends Animal {
-    void fly() {
+    protected void fly() {
         System.out.println("I am flying");
     }
 
-    void sing(){
+    protected void sing(){
         System.out.println("I am singing");
     }
 
-    void getIdentify() {
+    protected void getIdentify() {
         System.out.println("I am Bird");
     }
 }

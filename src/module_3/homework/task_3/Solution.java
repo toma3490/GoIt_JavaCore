@@ -10,5 +10,8 @@ public class Solution {
         course [2] = new Course(8, "Mrs. Smith");
         course [3] = new Course(new Date(), "Tyler");
         course [4] = new Course(2, "Mr. Tucker");
+
+        Student student1 = new Student("John", "Smith", 1);
+        Student student2 = new Student("Dow", course);
     }
 }
