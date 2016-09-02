@@ -10,6 +10,7 @@ public class SpecialStudent extends CollegeStudent {
     SpecialStudent(String lastName, Course[] coursesTaken) {
         super(lastName, coursesTaken);
     }
+
     SpecialStudent(String firstName, String lastName, int group, long secretKey, String email){
         super(firstName, lastName, group);
         this.secretKey = secretKey;

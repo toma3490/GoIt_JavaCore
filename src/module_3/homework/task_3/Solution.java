@@ -13,5 +13,11 @@ public class Solution {
 
         Student student1 = new Student("John", "Smith", 1);
         Student student2 = new Student("Dow", course);
+        CollegeStudent collegeStudent1 = new CollegeStudent("Nicolas", "Kage", 5);
+        CollegeStudent collegeStudent2 = new CollegeStudent("Bullock", course);
+        CollegeStudent collegeStudent3 = new CollegeStudent("Sam", "Smith", 5, "MIT", 2, 1205);
+        SpecialStudent specialStudent1 = new SpecialStudent("Vin", "Diesel", 3);
+        SpecialStudent specialStudent2 = new SpecialStudent("Waker", course);
+        SpecialStudent specialStudent3 = new SpecialStudent("Walter", "Melon", 3, 12594489, "WM@gmail.com");
     }
 }
