@@ -2,8 +2,8 @@ package module_4.homework;
 
 public class USBank extends Bank {
 
-    public USBank(long id, String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
-        super(id, bankCountry, currency, numberOfEmployees, avrSalaryOfEmployee, rating, totalCapital);
+    public USBank(String bankCountry, Currency currency, int numberOfEmployees, double avrSalaryOfEmployee, long rating, long totalCapital) {
+        super(bankCountry, currency, numberOfEmployees, avrSalaryOfEmployee, rating, totalCapital);
     }
 
     @Override
@@ -14,25 +14,22 @@ public class USBank extends Bank {
 
     @Override
     public int getLimitOfFunding() {
-        int limit = 0;
-        if(getCurrency() == Currency.EUR){
-            limit = 10000;
-        }
+        int limit = getCurrency() == Currency.EUR ? 10000 : 0;
         return limit;
     }
 
     @Override
     public int getMonthlyRate() {
-        int monthlyRate = getCurrency() == Currency.USD ? 1 : 2;
-        return monthlyRate;
+        int rate = getCurrency() == Currency.USD ? 1 : 2;
+        return rate;
     }
 
     @Override
-    int getCommission(int sum) {
+    public int getCommission(int sum) {
         int commission;
-        if(sum <= 1000){
+        if (sum <= 1000){
             commission = getCurrency() == Currency.USD ? 5 : 6;
-        }else{
+        }else {
             commission = getCurrency() == Currency.USD ? 7 : 8;
         }
         return commission;
