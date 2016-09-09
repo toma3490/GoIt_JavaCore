@@ -2,6 +2,7 @@ package module_4.homework;
 
 public class User {
     private long id;
+    private static long nextId = 1;
     private String name;
     private double balance;
     private int monthsOfEmployment;
@@ -9,22 +10,27 @@ public class User {
     private int salary;
     private Bank bank;
 
-    public User(long id, String name, double balance, int monthsOfEmployment, String companyName, int salary, Bank bank) {
-        this.id = id;
+    public User(String name, double balance, int monthsOfEmployment, String companyName, int salary, Bank bank) {
         this.name = name;
         this.balance = balance;
         this.monthsOfEmployment = monthsOfEmployment;
         this.companyName = companyName;
         this.salary = salary;
         this.bank = bank;
+//        id = 0;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId() {
+        id = nextId;
+        nextId++;
+    }
+
+    public static long getNextId(){
+        return nextId;
     }
 
     public String getName() {
@@ -77,14 +83,18 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", balance=" + balance +
-                ", monthsOfEmployment=" + monthsOfEmployment +
-                ", companyName='" + companyName + '\'' +
-                ", salary=" + salary +
-                ", bank=" + bank +
+        return "User {" +
+                "id = " + id +
+                ", name = '" + name + '\'' +
+                ", balance = " + balance +
+                ", monthsOfEmployment = " + monthsOfEmployment +
+                ", companyName = '" + companyName + '\'' +
+                ", salary = " + salary +
+                ", bank = " + bank.getClass().getSimpleName() +
                 '}';
     }
+
+
+
+
 }
