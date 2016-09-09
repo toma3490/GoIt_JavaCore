@@ -8,24 +8,21 @@ public class USBank extends Bank {
 
     @Override
     public int getLimitOfWithdrawal() {
-        int limit = getCurrency() == Currency.USD ? 1000 : 1200;
-        return limit;
+        return getCurrency() == Currency.USD ? 1000 : 1200;
     }
 
     @Override
     public int getLimitOfFunding() {
-        int limit = getCurrency() == Currency.EUR ? 10000 : 0;
-        return limit;
+        return getCurrency() == Currency.EUR ? 10000 : Integer.MAX_VALUE;
     }
 
     @Override
     public int getMonthlyRate() {
-        int rate = getCurrency() == Currency.USD ? 1 : 2;
-        return rate;
+        return getCurrency() == Currency.USD ? 1 : 2;
     }
 
     @Override
-    public int getCommission(int sum) {
+    public int getCommission(double sum) {
         int commission;
         if (sum <= 1000){
             commission = getCurrency() == Currency.USD ? 5 : 6;

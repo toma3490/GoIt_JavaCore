@@ -8,24 +8,22 @@ public class ChinaBank extends Bank {
 
     @Override
     public int getLimitOfWithdrawal() {
-        int limit = getCurrency() == Currency.USD ? 100 : 150;
-        return limit;
+        return getCurrency() == Currency.USD ? 100 : 150;
     }
 
     @Override
     public int getLimitOfFunding() {
-        int limit = getCurrency() == Currency.EUR ? 5000 : 10000;
-        return limit;
+        return getCurrency() == Currency.EUR ? 5000 : 10000;
+
     }
 
     @Override
     public int getMonthlyRate() {
-        int rate = getCurrency() == Currency.USD ? 1 : 0;
-        return rate;
+        return getCurrency() == Currency.USD ? 1 : 0;
     }
 
     @Override
-    public int getCommission(int sum) {
+    public int getCommission(double sum) {
         int commission;
         if (sum <= 1000){
             commission = getCurrency() == Currency.USD ? 3 : 10;

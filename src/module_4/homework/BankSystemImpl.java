@@ -2,40 +2,69 @@ package module_4.homework;
 
 public class BankSystemImpl implements BankSystem {
 
-//    public double checkLimit(User user, int amount){
-//        if (amount >= 0 && amount <= user.getBank().getLimitOfWithdrawal()){
-//            withdraw(user, amount);
-//        }else {
-//            System.out.println("Enter CORRECT amount!!");
-//        }
-//    }
-//
-//    public void withdraw(User user, int amount){
-//        double withdraw = user.getBalance() - amount - amount * user.getBank().getCommission(amount);
-//        if(user.getBalance() > withdraw){
-//            withdrawOfUser(user, amount);
-//        }else {
-//            System.out.println("You have not enough money!!");
-//        }
-//    }
+    private double conversion (User fromUser, User toUser){
+        double course = 1;
+        if(fromUser.getBank().getCurrency() == Currency.USD && toUser.getBank().getCurrency() == Currency.EUR){
+            course = 0.87;
+        }
+        if (fromUser.getBank().getCurrency() == Currency.EUR && toUser.getBank().getCurrency() == Currency.USD){
+            course = 1.1;
+        }
+        return course;
+    }
 
-    @Override
-    public void withdrawOfUser(User user, int amount) {
-        user.setBalance(user.getBalance() - amount - amount * user.getBank().getCommission(amount));
+    private double withdrawal(User user, double amount){
+        return user.getBalance() - amount - amount * user.getBank().getCommission(amount)/100;
+    }
+
+    private double fund(User user, double amount){
+        return user.getBalance() + amount;
+    }
+
+    private void checkLimitOfWithdrawal(User user, double amount){
+        if (amount < 0 || amount > user.getBank().getLimitOfWithdrawal()){
+            throw new IllegalArgumentException("Incorrect amount!!");
+        }
+    }
+
+    private void checkLimitOfFounding(User user, double amount){
+        if (amount < 0 || amount > user.getBank().getLimitOfFunding()){
+            throw new IllegalArgumentException("Incorrect amount!!");
+        }
+    }
+
+    private void checkWithdraw(User user, double amount){
+        if(user.getBalance() < withdrawal(user, amount)){
+            throw new IllegalArgumentException("You have not enough money!!");
+        }
     }
 
     @Override
-    public void fundUser(User user, int amount) {
-
+    public void withdrawOfUser(User user, double amount) {
+        checkLimitOfWithdrawal(user, amount);
+        checkWithdraw(user, amount);
+        user.setBalance(withdrawal(user, amount));
     }
 
     @Override
-    public void transferMoney(User fromUser, User toUser, int amount) {
+    public void fundUser(User user, double amount) {
+        checkLimitOfFounding(user, amount);
+        user.setBalance(fund(user, amount));
+    }
 
+    @Override
+    public void transferMoney(User fromUser, User toUser, double amount) {
+//        checkLimitOfWithdrawal(fromUser, amount);
+//        checkWithdraw(fromUser, amount);
+//        checkLimitOfFounding(toUser, amount);
+//        fromUser.setBalance(withdrawal(fromUser, amount));
+//        toUser.setBalance(fund(toUser, amount));
+        withdrawOfUser(fromUser, amount);
+        fundUser(toUser, amount * conversion(fromUser, toUser));
     }
 
     @Override
     public void paySalary(User user) {
-
+        fundUser(user, user.getSalary());
     }
 }

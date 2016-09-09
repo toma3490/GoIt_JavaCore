@@ -17,7 +17,6 @@ public class User {
         this.companyName = companyName;
         this.salary = salary;
         this.bank = bank;
-//        id = 0;
     }
 
     public long getId() {
