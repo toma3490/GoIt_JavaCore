@@ -2,7 +2,7 @@ package module_4.homework;
 
 public class BankSystemImpl implements BankSystem {
 
-    private double conversion (User fromUser, User toUser){
+    public double conversion (User fromUser, User toUser){
         double course = 1;
         if(fromUser.getBank().getCurrency() == Currency.USD && toUser.getBank().getCurrency() == Currency.EUR){
             course = 0.87;
@@ -13,27 +13,27 @@ public class BankSystemImpl implements BankSystem {
         return course;
     }
 
-    private double withdrawal(User user, double amount){
+    public double withdrawal(User user, double amount){
         return user.getBalance() - amount - amount * user.getBank().getCommission(amount)/100;
     }
 
-    private double fund(User user, double amount){
+    public double fund(User user, double amount){
         return user.getBalance() + amount;
     }
 
-    private void checkLimitOfWithdrawal(User user, double amount){
+    public void checkLimitOfWithdrawal(User user, double amount){
         if (amount < 0 || amount > user.getBank().getLimitOfWithdrawal()){
             throw new IllegalArgumentException("Incorrect amount!!");
         }
     }
 
-    private void checkLimitOfFounding(User user, double amount){
+    public void checkLimitOfFounding(User user, double amount){
         if (amount < 0 || amount > user.getBank().getLimitOfFunding()){
             throw new IllegalArgumentException("Incorrect amount!!");
         }
     }
 
-    private void checkWithdraw(User user, double amount){
+    public void checkWithdraw(User user, double amount){
         if(user.getBalance() < withdrawal(user, amount)){
             throw new IllegalArgumentException("You have not enough money!!");
         }
