@@ -32,10 +32,6 @@ public abstract class Bank {
         return nextId;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getBankCountry() {
         return bankCountry;
     }

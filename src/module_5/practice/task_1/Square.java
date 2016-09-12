@@ -19,4 +19,20 @@ public final class Square extends View {
             counter--;
         }
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+
+        Square square = (Square) object;
+
+        return counter == square.counter;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return counter;
+    }
 }

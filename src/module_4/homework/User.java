@@ -36,10 +36,6 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getBalance() {
         return balance;
     }
@@ -92,8 +88,4 @@ public class User {
                 ", bank = " + bank.getClass().getSimpleName() +
                 '}';
     }
-
-
-
-
 }
