@@ -94,7 +94,7 @@ public abstract class Bank {
                 ", bankCountry = '" + getBankCountry() + '\'' +
                 ", currency = " + getCurrency() +
                 ", numberOfEmployees = " + getNumberOfEmployees() +
-                ", avrSalaryOfEmployee = " + getAvrSalaryOfEmployee() +
+                ", avrSalaryOfEmployee = " + String.format("%.2f", getAvrSalaryOfEmployee()) +
                 ", rating = " + getRating() +
                 ", totalCapital = " + getTotalCapital() +
                 '}';

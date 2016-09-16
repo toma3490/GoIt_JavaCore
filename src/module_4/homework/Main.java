@@ -20,7 +20,7 @@ public class Main {
 
         BankSystemImpl bankSystem = new BankSystemImpl();
 
-        User user1 = new User("Bruce Wayne", 10000, 24, "WayneTech", 5000, usBank);
+        User user1 = new User("Bruce Wayne", 7500, 24, "WayneTech", 5000, usBank);
         User user2 = new User("Clark Kent", 5000, 13, "Daily Planet", 2500, usBank);
         User user3 = new User("James Bond", 4000, 4, "MI6", 2000, euBank);
         User user4 = new User("Van Helsing", 1000, 8, "VampSl", 500, euBank);
@@ -34,7 +34,7 @@ public class Main {
         user5.setId();
         user6.setId();
 
-        bankSystem.withdrawOfUser(user1, 750);
+        bankSystem.withdrawOfUser(user1, 850);
         bankSystem.fundUser(user1, 1000);
         bankSystem.transferMoney(user1, user2, 500);
         bankSystem.paySalary(user1);
@@ -55,7 +55,7 @@ public class Main {
         bankSystem.paySalary(user4);
 
         bankSystem.withdrawOfUser(user5, 50);
-        bankSystem.fundUser(user5, 1000);
+        bankSystem.fundUser(user5, 10000);
         bankSystem.transferMoney(user5, user6, 25);
         bankSystem.paySalary(user5);
 

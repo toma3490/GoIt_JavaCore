@@ -23,19 +23,19 @@ public class BankSystemImpl implements BankSystem {
 
     public void checkLimitOfWithdrawal(User user, double amount){
         if (amount < 0 || amount > user.getBank().getLimitOfWithdrawal()){
-            throw new IllegalArgumentException("Incorrect amount!!");
+            throw new IllegalArgumentException(user.getName() + ", incorrect amount!! Your limit of withdrawal is " + user.getBank().getLimitOfWithdrawal());
         }
     }
 
     public void checkLimitOfFounding(User user, double amount){
         if (amount < 0 || amount > user.getBank().getLimitOfFunding()){
-            throw new IllegalArgumentException("Incorrect amount!!");
+            throw new IllegalArgumentException(user.getName() + ", incorrect amount!! Your limit of funding is " + user.getBank().getLimitOfFunding());
         }
     }
 
     public void checkWithdraw(User user, double amount){
-        if(user.getBalance() < withdrawal(user, amount)){
-            throw new IllegalArgumentException("You have not enough money!!");
+        if(withdrawal(user, amount) < 0){
+            throw new IllegalArgumentException(user.getName() + ", you have not enough money!! Your balance: " + user.getBalance() + ", you trying withdraw: " + amount);
         }
     }
 

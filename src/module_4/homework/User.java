@@ -81,7 +81,7 @@ public class User {
         return "User {" +
                 "id = " + id +
                 ", name = '" + name + '\'' +
-                ", balance = " + balance +
+                ", balance = " + String.format("%.2f", balance)  +
                 ", monthsOfEmployment = " + monthsOfEmployment +
                 ", companyName = '" + companyName + '\'' +
                 ", salary = " + salary +
