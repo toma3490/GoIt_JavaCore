@@ -5,8 +5,8 @@ public class TripAdvisorAPI implements API{
 
     public TripAdvisorAPI(){
         Room room1 = new Room(2500, 2, 2016, 9, 12, "Ibis", "Kiev");
-        Room room2 = new Room(6000, 4, 2016, 8, 25, "Hilton", "Kiev");
-        Room room3 = new Room(2000, 1, 2016, 9, 1, "New", "Polyanutsya");
+        Room room2 = new Room(1500, 1, 2016, 8, 25, "Hilton", "Kiev");
+        Room room3 = new Room(2700, 1, 2016, 9, 1, "New", "Polyanutsya");
         Room room4 = new Room(3500, 2, 2016, 10, 2, "Khreschatyk", "Kiev");
         Room room5 = new Room(3000, 3, 2016, 7, 21, "Ukraine", "Kiev");
         rooms[0] = room1;
