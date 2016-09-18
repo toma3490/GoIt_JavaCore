@@ -21,6 +21,8 @@ public class DAOImpl implements DAO {
 
     @Override
     public Room findById(long id) {
-        return null;
+        Room room = new Room(0, 0, 0, 0, 0, null, null);
+        System.out.println(room.toString() + " found");
+        return room;
     }
 }

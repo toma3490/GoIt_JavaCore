@@ -1,7 +1,8 @@
 package module_5.homework;
 
 public class TripAdvisorAPI implements API{
-    private Room[] rooms = new Room[5];
+    private int amount = 5;
+    private Room[] rooms = new Room[amount];
 
     public TripAdvisorAPI(){
         Room room1 = new Room(2500, 2, 2016, 9, 12, "Ibis", "Kiev");
@@ -21,18 +22,37 @@ public class TripAdvisorAPI implements API{
 
     @Override
     public Room[] findRooms(int price, int persons, String city, String hotel) {
-        Room[] roomsTest = new Room[5];
-        Room roomTest = new Room(price, persons, 0, 0, 0, city, hotel);
-        for (int i = 0; i < roomsTest.length - 1; i++) {
+        Room[] roomsExample = new Room[amount];
+        Room roomExample = new Room(price, persons, 0, 0, 0, city, hotel);
+        Room[] roomsExample1 = new Room[countArrayLength(hotel, roomsExample, roomExample)];
+
+        roomFinder(hotel, roomsExample1, roomExample);
+
+        return roomsExample1;
+    }
+
+    private void roomFinder(String hotel, Room[] roomsExample, Room roomExample) {
+        for (int i = 0; i < roomsExample.length - 1; i++) {
             for (Room room : rooms) {
-                if (room.equals(roomTest) && room.getHotelName().equals(hotel)){
-                    roomsTest[i] = room;
+                if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
+                    roomsExample[i] = room;
                 }
             }
         }
-
-        return roomsTest;
     }
+
+    private int countArrayLength(String hotel, Room[] roomsExample, Room roomExample) {
+        int counter = 0;
+        for (int i = 0; i < roomsExample.length - 1; i++) {
+            for (Room room : rooms) {
+                if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+
 
     @Override
     public Room[] getAllRooms() {
