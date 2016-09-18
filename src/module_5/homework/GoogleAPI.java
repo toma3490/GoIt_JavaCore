@@ -1,5 +1,7 @@
 package module_5.homework;
 
+import java.util.Arrays;
+
 public class GoogleAPI implements API{
     private int amount = 5;
     private Room[] rooms = new Room[amount];
@@ -57,5 +59,12 @@ public class GoogleAPI implements API{
     @Override
     public Room[] getAllRooms() {
         return rooms;
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "GoogleAPI{" +
+                "rooms = " + Arrays.toString(rooms) +
+                '}';
     }
 }
