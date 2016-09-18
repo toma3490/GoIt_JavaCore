@@ -1,5 +1,7 @@
 package module_5.homework;
 
+import com.sun.deploy.util.ArrayUtil;
+
 import java.util.Arrays;
 
 public class Controller {
@@ -20,20 +22,19 @@ public class Controller {
         GoogleAPI googleAPI = new GoogleAPI();
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
-        apis[0] = bookingComAPI;
-        apis[1] = googleAPI;
-        apis[2] = tripAdvisorAPI;
-
         Room[] resultBooking = bookingComAPI.findRooms(price, persons, city, hotel);
         Room[] resultGoogle = googleAPI.findRooms(price, persons, city, hotel);
         Room[] resultTripAdvisor = tripAdvisorAPI.findRooms(price, persons, city, hotel);
 
-        Room[] requestRooms = new Room[resultBooking.length + resultGoogle.length + resultTripAdvisor.length];
-        requestRooms = resultBooking.;
-//        for (API api : apis) {
-//            api.findRooms(price, persons, city, hotel);
-//        }
-        return requestRooms;
+        return concat(resultBooking, resultGoogle, resultTripAdvisor);
+    }
+
+    public Room[] concat(Room[] rooms1, Room[] rooms2, Room[] rooms3) {
+        Room[] resultRooms = new Room[rooms1.length + rooms2.length + rooms3.length];
+        System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
+        System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
+        System.arraycopy(rooms3, 0, resultRooms, rooms2.length, rooms3.length);
+        return resultRooms;
     }
 
     public Room[] check(API api1, API api2){
