@@ -17,18 +17,24 @@ public class Controller {
         apis[2] = tripAdvisorAPI;
     }
 
-    public Room[] requestRooms(int price, int persons, String city, String hotel){
+    public Room[] requestRooms(int price, int persons, String hotel, String city){
         BookingComAPI bookingComAPI = new BookingComAPI();
         GoogleAPI googleAPI = new GoogleAPI();
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
-        Room[] resultBooking = bookingComAPI.findRooms(price, persons, city, hotel);
-        Room[] resultGoogle = googleAPI.findRooms(price, persons, city, hotel);
-        Room[] resultTripAdvisor = tripAdvisorAPI.findRooms(price, persons, city, hotel);
+        Room[] resultBooking = bookingComAPI.findRooms(price, persons, hotel, city);
+        Room[] resultGoogle = googleAPI.findRooms(price, persons, hotel, city);
+        Room[] resultTripAdvisor = tripAdvisorAPI.findRooms(price, persons, hotel, city);
 
-        System.out.println(concat(resultBooking, resultGoogle, resultTripAdvisor).toString());
+        Room[] resultOfRequest = concat(resultBooking, resultGoogle, resultTripAdvisor);
 
-        return concat(resultBooking, resultGoogle, resultTripAdvisor);
+//        DAOImpl daoImpl = new DAOImpl();
+//
+//        for (Room rooms : resultOfRequest) {
+//            daoImpl.save(rooms);
+//        }
+
+        return resultOfRequest;
     }
 
     public Room[] concat(Room[] rooms1, Room[] rooms2, Room[] rooms3) {
@@ -43,15 +49,22 @@ public class Controller {
         Room[] roomsFromAPI1 = api1.getAllRooms();
         Room[] roomsFromAPI2 = api2.getAllRooms();
 
-        int counter = 0;
+        int countRooms = 0;
 
         for (int i = 0; i < roomsFromAPI1.length - 1; i++) {
             if(roomsFromAPI1[i].equals(roomsFromAPI2)){
-                counter++;
+                countRooms++;
             }
         }
 
+        Room[] resultRooms = new Room[countRooms];
 
-        return null;
+        for (int i = 0; i < roomsFromAPI1.length - 1; i++) {
+            if(roomsFromAPI1[i].equals(roomsFromAPI2)){
+                resultRooms[i] = roomsFromAPI1[i];
+            }
+        }
+
+        return resultRooms;
     }
 }

@@ -23,9 +23,9 @@ public class TripAdvisorAPI implements API{
     }
 
     @Override
-    public Room[] findRooms(int price, int persons, String city, String hotel) {
+    public Room[] findRooms(int price, int persons, String hotel, String city) {
         Room[] roomsExample = new Room[amount];
-        Room roomExample = new Room(price, persons, 0, 0, 0, city, hotel);
+        Room roomExample = new Room(price, persons, 0, 0, 0, hotel, city);
         Room[] roomsExample1 = new Room[countArrayLength(hotel, roomsExample, roomExample)];
 
         roomFinder(hotel, roomsExample1, roomExample);

@@ -70,10 +70,18 @@ public class Room {
 
         Room room = (Room) object;
 
-        if (price != room.price) return false;
-        if (persons != room.persons) return false;
-        return cityName.equals(room.cityName);
+        if (price != 0){
+            if (price != room.price) return false;
+        }
 
+        if (persons != 0){
+            if (persons != room.persons) return false;
+        }
+
+        if (cityName != null){
+            return cityName.equals(room.cityName);
+        }
+    return true;
     }
 
     @Override
