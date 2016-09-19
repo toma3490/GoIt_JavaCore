@@ -18,13 +18,13 @@ public class Controller {
     }
 
     public Room[] requestRooms(int price, int persons, String hotel, String city){
-        BookingComAPI bookingComAPI = new BookingComAPI();
-        GoogleAPI googleAPI = new GoogleAPI();
-        TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
+//        BookingComAPI bookingComAPI = new BookingComAPI();
+//        GoogleAPI googleAPI = new GoogleAPI();
+//        TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
-        Room[] resultBooking = bookingComAPI.findRooms(price, persons, hotel, city);
-        Room[] resultGoogle = googleAPI.findRooms(price, persons, hotel, city);
-        Room[] resultTripAdvisor = tripAdvisorAPI.findRooms(price, persons, hotel, city);
+        Room[] resultBooking = apis[0].findRooms(price, persons, hotel, city);
+        Room[] resultGoogle = apis[1].findRooms(price, persons, hotel, city);
+        Room[] resultTripAdvisor = apis[2].findRooms(price, persons, hotel, city);
 
         Room[] resultOfRequest = concat(resultBooking, resultGoogle, resultTripAdvisor);
 

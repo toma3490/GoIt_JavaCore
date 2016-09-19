@@ -26,9 +26,9 @@ public class BookingComAPI implements API{
 
     @Override
     public Room[] findRooms(int price, int persons, String hotel, String city) {
-        Room[] roomsExample = new Room[amount];
+//        Room[] roomsExample = new Room[amount];
         Room roomExample = new Room(price, persons, 0, 0, 0, hotel, city);
-        Room[] roomsExample1 = new Room[countArrayLength(hotel, roomsExample, roomExample)];
+        Room[] roomsExample1 = new Room[countArrayLength(hotel, roomExample)];
 
         roomFinder(hotel, roomsExample1, roomExample);
 
@@ -45,13 +45,11 @@ public class BookingComAPI implements API{
         }
     }
 
-    private int countArrayLength(String hotel, Room[] roomsExample, Room roomExample) {
+    private int countArrayLength(String hotel, Room roomExample) {
         int counter = 0;
-        for (int i = 0; i < roomsExample.length - 1; i++) {
-            for (Room room : rooms) {
-                if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
+        for (Room room : rooms) {
+            if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
                     counter++;
-                }
             }
         }
         return counter;
