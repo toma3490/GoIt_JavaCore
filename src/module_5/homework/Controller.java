@@ -18,9 +18,6 @@ public class Controller {
     }
 
     public Room[] requestRooms(int price, int persons, String hotel, String city){
-//        BookingComAPI bookingComAPI = new BookingComAPI();
-//        GoogleAPI googleAPI = new GoogleAPI();
-//        TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
         Room[] resultBooking = apis[0].findRooms(price, persons, hotel, city);
         Room[] resultGoogle = apis[1].findRooms(price, persons, hotel, city);
@@ -49,22 +46,29 @@ public class Controller {
         Room[] roomsFromAPI1 = api1.getAllRooms();
         Room[] roomsFromAPI2 = api2.getAllRooms();
 
-        int countRooms = 0;
+        Room[] resultRooms = new Room[getCountRooms(roomsFromAPI1, roomsFromAPI2)];
 
-        for (int i = 0; i < roomsFromAPI1.length - 1; i++) {
-            if(roomsFromAPI1[i].equals(roomsFromAPI2)){
-                countRooms++;
-            }
-        }
+        getResultRooms(roomsFromAPI1, roomsFromAPI2, resultRooms);
 
-        Room[] resultRooms = new Room[countRooms];
+        return resultRooms;
+    }
 
-        for (int i = 0; i < roomsFromAPI1.length - 1; i++) {
+    private void getResultRooms(Room[] roomsFromAPI1, Room[] roomsFromAPI2, Room[] resultRooms) {
+        for (int i = 0; i < roomsFromAPI1.length; i++) {
             if(roomsFromAPI1[i].equals(roomsFromAPI2)){
                 resultRooms[i] = roomsFromAPI1[i];
             }
         }
+    }
 
-        return resultRooms;
+    private int getCountRooms(Room[] roomsFromAPI1, Room[] roomsFromAPI2) {
+        int countRooms = 0;
+
+        for (int i = 0; i < roomsFromAPI1.length; i++) {
+            if(roomsFromAPI1[i].equals(roomsFromAPI2)){
+                countRooms++;
+            }
+        }
+        return countRooms;
     }
 }

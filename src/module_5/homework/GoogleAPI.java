@@ -24,9 +24,9 @@ public class GoogleAPI implements API{
 
     @Override
     public Room[] findRooms(int price, int persons, String hotel, String city) {
-        Room[] roomsExample = new Room[amount];
+//        Room[] roomsExample = new Room[amount];
         Room roomExample = new Room(price, persons, 0, 0, 0, hotel, city);
-        Room[] roomsExample1 = new Room[countArrayLength(hotel, roomsExample, roomExample)];
+        Room[] roomsExample1 = new Room[countArrayLength(hotel, roomExample)];
 
         roomFinder(hotel, roomsExample1, roomExample);
 
@@ -34,7 +34,7 @@ public class GoogleAPI implements API{
     }
 
     private void roomFinder(String hotel, Room[] roomsExample, Room roomExample) {
-        for (int i = 0; i < roomsExample.length - 1; i++) {
+        for (int i = 0; i < roomsExample.length; i++) {
             for (Room room : rooms) {
                 if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
                     roomsExample[i] = room;
@@ -43,13 +43,11 @@ public class GoogleAPI implements API{
         }
     }
 
-    private int countArrayLength(String hotel, Room[] roomsExample, Room roomExample) {
+    private int countArrayLength(String hotel, Room roomExample) {
         int counter = 0;
-        for (int i = 0; i < roomsExample.length - 1; i++) {
-            for (Room room : rooms) {
-                if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
-                    counter++;
-                }
+        for (Room room : rooms) {
+            if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
+                counter++;
             }
         }
         return counter;

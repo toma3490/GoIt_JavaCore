@@ -36,7 +36,7 @@ public class BookingComAPI implements API{
     }
 
     private void roomFinder(String hotel, Room[] roomsExample, Room roomExample) {
-        for (int i = 0; i < roomsExample.length - 1; i++) {
+        for (int i = 0; i < roomsExample.length; i++) {
             for (Room room : rooms) {
                 if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
                     roomsExample[i] = room;
