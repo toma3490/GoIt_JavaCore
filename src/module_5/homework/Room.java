@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Room {
     private long id;
-    private static long nextId = 1;
+    private static long nextId = 0;
     private int price;
     private int persons;
     private Date dateAvailableFrom;
@@ -19,16 +19,12 @@ public class Room {
         this.dateAvailableFrom = calendar.getTime();
         this.hotelName = hotelName;
         this.cityName = cityName;
+        id = ++nextId;
 
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId() {
-        this.id = nextId;
-        nextId++;
     }
 
     public int getPrice() {
