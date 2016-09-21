@@ -8,7 +8,7 @@ public class TripAdvisorAPI implements API{
     private Room[] rooms = new Room[amount];
 
     public TripAdvisorAPI(){
-        Room room1 = new Room(3000, 3, 2016, 10, 2, "Ukraine", "Kiev");
+        Room room1 = new Room(2700, 2, 2016, 10, 2, "Ukraine", "Kiev");
         Room room2 = new Room(1500, 1, 2016, 8, 25, "Hilton", "Kiev");
         Room room3 = new Room(2700, 1, 2016, 9, 1, "New", "Polyanutsya");
         Room room4 = new Room(3500, 2, 2016, 10, 2, "Khreschatyk", "Kiev");
@@ -25,11 +25,10 @@ public class TripAdvisorAPI implements API{
         Room roomExample = new Room(price, persons, 0, 0, 0, hotel, city);
         ArrayList<Room> roomsList = new ArrayList<Room>();
         for (Room room : rooms) {
-            if (room.equals(roomExample) && room.getHotelName().equals(roomExample.getHotelName())){
+            if (room.equals(roomExample) && room.getHotelName().equals(roomExample.getHotelName())) {
                 roomsList.add(room);
             }
         }
-
         Room[] roomsFind = new Room[roomsList.size()];
         roomsList.toArray(roomsFind);
         return roomsFind;

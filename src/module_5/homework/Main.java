@@ -10,12 +10,12 @@ public class Main {
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
         System.out.println(Arrays.toString(controller.requestRooms(3000, 3, "Ukraine", "Kiev")) + '\n');
-        System.out.println(Arrays.toString(controller.requestRooms(3500, 2, "Khreschatyk", "Kiev")) + '\n');
-        System.out.println(Arrays.toString(controller.requestRooms(2700, 1, "New", "Polyanutsya")) + '\n');
+//        System.out.println(Arrays.toString(controller.requestRooms(3500, 2, "Khreschatyk", "Kiev")) + '\n');
+//        System.out.println(Arrays.toString(controller.requestRooms(2700, 1, "New", "Polyanutsya")) + '\n');
 
-        System.out.println(Arrays.toString(controller.check(bookingComAPI, googleAPI)));
-        System.out.println(Arrays.toString(controller.check(bookingComAPI, tripAdvisorAPI)));
-        System.out.println(Arrays.toString(controller.check(googleAPI, tripAdvisorAPI)));
+//        System.out.println(Arrays.toString(controller.check(bookingComAPI, googleAPI)));
+//        System.out.println(Arrays.toString(controller.check(bookingComAPI, tripAdvisorAPI)));
+//        System.out.println(Arrays.toString(controller.check(googleAPI, tripAdvisorAPI)));
 
     }
 }

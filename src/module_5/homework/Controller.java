@@ -1,7 +1,6 @@
 package module_5.homework;
 
-import com.sun.deploy.util.ArrayUtil;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Controller {
@@ -46,29 +45,18 @@ public class Controller {
         Room[] roomsFromAPI1 = api1.getAllRooms();
         Room[] roomsFromAPI2 = api2.getAllRooms();
 
-        Room[] resultRooms = new Room[getCountRooms(roomsFromAPI1, roomsFromAPI2)];
+        ArrayList<Room> roomsList = new ArrayList<Room>();
 
-        getResultRooms(roomsFromAPI1, roomsFromAPI2, resultRooms);
-
-        return resultRooms;
-    }
-
-    private void getResultRooms(Room[] roomsFromAPI1, Room[] roomsFromAPI2, Room[] resultRooms) {
-        for (int i = 0; i < roomsFromAPI1.length; i++) {
-            if(roomsFromAPI1[i].equals(roomsFromAPI2)){
-                resultRooms[i] = roomsFromAPI1[i];
+        for (Room room : roomsFromAPI1) {
+            for (Room room1 : roomsFromAPI2) {
+                if (room.equals(room1)) {
+                    roomsList.add(room);
+                }
             }
         }
-    }
 
-    private int getCountRooms(Room[] roomsFromAPI1, Room[] roomsFromAPI2) {
-        int countRooms = 0;
-
-        for (int i = 0; i < roomsFromAPI1.length; i++) {
-            if(roomsFromAPI1[i].equals(roomsFromAPI2)){
-                countRooms++;
-            }
-        }
-        return countRooms;
+        Room[] roomsFind = new Room[roomsList.size()];
+        roomsList.toArray(roomsFind);
+        return roomsFind;
     }
 }
