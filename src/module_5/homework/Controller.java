@@ -24,21 +24,47 @@ public class Controller {
 
         Room[] resultOfRequest = concat(resultBooking, resultGoogle, resultTripAdvisor);
 
-//        DAOImpl daoImpl = new DAOImpl();
-//
-//        for (Room rooms : resultOfRequest) {
-//            daoImpl.save(rooms);
-//        }
+        DAOImpl daoImpl = new DAOImpl();
+
+        for (Room rooms : resultOfRequest) {
+            daoImpl.save(rooms);
+        }
 
         return resultOfRequest;
     }
 
-    public Room[] concat(Room[] rooms1, Room[] rooms2, Room[] rooms3) {
-        Room[] resultRooms = new Room[rooms1.length + rooms2.length + rooms3.length];
-        System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
-        System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
-        System.arraycopy(rooms3, 0, resultRooms, rooms2.length, rooms3.length);
+    private Room[] concat(Room[] rooms1, Room[] rooms2, Room[] rooms3) {
+        Room[] resultRooms = new Room[getLength(rooms1) + getLength(rooms2) + getLength(rooms3)];
+
+        if (rooms1.length == 0 && rooms2.length == 0 && rooms3.length == 0) {
+            System.out.println("Sorry, there is no result with such params.");
+        }else if(rooms1.length == 0 && rooms2.length == 0){
+            System.arraycopy(rooms3, 0, resultRooms, 0, rooms3.length);
+        }else if(rooms1.length == 0 && rooms3.length == 0){
+            System.arraycopy(rooms2, 0, resultRooms, 0, rooms2.length);
+        }else if(rooms1.length == 0){
+            System.arraycopy(rooms2, 0, resultRooms, 0, rooms2.length);
+            System.arraycopy(rooms3, 0, resultRooms, rooms2.length, rooms3.length);
+        }else if(rooms2.length == 0 && rooms3.length == 0){
+            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
+        }else if(rooms2.length == 0){
+            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
+            System.arraycopy(rooms3, 0, resultRooms, rooms1.length, rooms3.length);
+        }else if(rooms3.length == 0){
+            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
+            System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
+        }else{
+            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
+            System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
+            System.arraycopy(rooms3, 0, resultRooms, rooms1.length + rooms2.length, rooms3.length);
+        }
         return resultRooms;
+    }
+
+    private int getLength(Room[] rooms){
+        int roomsLength = 0;
+        if (rooms.length != 0) roomsLength = rooms.length;
+        return roomsLength;
     }
 
     public Room[] check(API api1, API api2){

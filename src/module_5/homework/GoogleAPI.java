@@ -35,27 +35,6 @@ public class GoogleAPI implements API{
         return roomsFind;
     }
 
-//    private void roomFinder(String hotel, Room[] roomsExample, Room roomExample) {
-//        for (int i = 0; i < roomsExample.length; i++) {
-//            for (Room room : rooms) {
-//                if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
-//                    roomsExample[i] = room;
-//                }
-//            }
-//        }
-//    }
-//
-//    private int countArrayLength(String hotel, Room roomExample) {
-//        int counter = 0;
-//        for (Room room : rooms) {
-//            if (room.equals(roomExample) && room.getHotelName().equals(hotel)){
-//                counter++;
-//            }
-//        }
-//        return counter;
-//    }
-
-
     @Override
     public Room[] getAllRooms() {
         return rooms;

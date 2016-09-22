@@ -9,13 +9,18 @@ public class Main {
         GoogleAPI googleAPI = new GoogleAPI();
         TripAdvisorAPI tripAdvisorAPI = new TripAdvisorAPI();
 
+        System.out.println("Request rooms");
+        System.out.println("____________________________________________________________________________");
         System.out.println(Arrays.toString(controller.requestRooms(3000, 3, "Ukraine", "Kiev")) + '\n');
-//        System.out.println(Arrays.toString(controller.requestRooms(3500, 2, "Khreschatyk", "Kiev")) + '\n');
-//        System.out.println(Arrays.toString(controller.requestRooms(2700, 1, "New", "Polyanutsya")) + '\n');
+        System.out.println(Arrays.toString(controller.requestRooms(3500, 2, "Khreschatyk", "Kiev")) + '\n');
+        System.out.println(Arrays.toString(controller.requestRooms(2700, 1, "New", "Polyanutsya")) + '\n');
+        System.out.println("____________________________________________________________________________" + '\n');
 
-//        System.out.println(Arrays.toString(controller.check(bookingComAPI, googleAPI)));
-//        System.out.println(Arrays.toString(controller.check(bookingComAPI, tripAdvisorAPI)));
-//        System.out.println(Arrays.toString(controller.check(googleAPI, tripAdvisorAPI)));
+        System.out.println("Check rooms on API");
+        System.out.println("____________________________________________________________________________");
+        System.out.println(Arrays.toString(controller.check(bookingComAPI, googleAPI)));
+        System.out.println(Arrays.toString(controller.check(bookingComAPI, tripAdvisorAPI)));
+        System.out.println(Arrays.toString(controller.check(googleAPI, tripAdvisorAPI)));
 
     }
 }
