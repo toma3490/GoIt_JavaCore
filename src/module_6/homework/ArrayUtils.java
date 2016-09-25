@@ -2,7 +2,7 @@ package module_6.homework;
 
 import java.util.ArrayList;
 
-public class ArrayUtils {
+public final class ArrayUtils {
 
     public static int sum(int[] array){
         int sum = 0;
