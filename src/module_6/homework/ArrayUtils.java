@@ -1,5 +1,7 @@
 package module_6.homework;
 
+import java.util.ArrayList;
+
 public class ArrayUtils {
 
     public static int sum(int[] array){
@@ -65,5 +67,19 @@ public class ArrayUtils {
             array[array.length - i - 1] = temp;
         }
         return array;
+    }
+
+    public static Integer[] findEvenElements (int[] array){
+        ArrayList<Integer> evenElem = new ArrayList<Integer>();
+
+        for (int item : array) {
+            if (item % 2 == 0) {
+                    evenElem.add(item);
+            }
+        }
+
+        Integer[] evenElemArray = new Integer[evenElem.size()];
+        evenElem.toArray(evenElemArray);
+        return evenElemArray;
     }
 }

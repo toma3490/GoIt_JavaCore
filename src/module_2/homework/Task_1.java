@@ -165,6 +165,7 @@ public class Task_1 {
 //        System.out.println("Second largest element of arrayDouble = " + getSecondLargestElement(arrayDouble));
 
         System.out.println(Arrays.toString(ArrayUtils.reverse(arrayInt)));
+        System.out.println(Arrays.toString(ArrayUtils.findEvenElements(arrayInt)));
 
     }
 }
