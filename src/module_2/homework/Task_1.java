@@ -116,23 +116,26 @@ public class Task_1 {
 
     public static void main(String[] args) {
 
-////        Sum
+//        Sum
 //        System.out.println("Sum of arrayInt = " + sum(arrayInt));
 //        System.out.print("Sum of arrayDouble = ");
 //        System.out.format("%.4f%n", sum(arrayDouble));
-//        System.out.println();
+        System.out.println("Sum of arrayInt = " + ArrayUtils.sum(arrayInt));
+        System.out.println();
 //
-////        Min
+//        Min
 //        System.out.println("Minimum of arrayInt = " + min(arrayInt));
 //        System.out.println("Minimum of arrayDouble = " + min(arrayDouble));
-//        System.out.println();
+        System.out.println("Minimum of arrayInt = " + ArrayUtils.min(arrayInt));
+        System.out.println();
 //
-////        Max
+//        Max
 //        System.out.println("Maximum of arrayInt = " + max(arrayInt));
 //        System.out.println("Maximum of arrayDouble = " + max(arrayDouble));
-//        System.out.println();
+        System.out.println("Maximum of arrayInt = " + ArrayUtils.max(arrayInt));
+        System.out.println();
 //
-////        MaxPositive
+//        MaxPositive
 //        if (maxPositive(arrayInt) > 0){
 //            System.out.println("MaximumPositive of arrayInt = " + maxPositive(arrayInt));
 //        }
@@ -142,15 +145,18 @@ public class Task_1 {
 //            System.out.println("MaximumPositive of arrayDouble = " + maxPositive(arrayDouble));
 //        }
 //        else System.out.println("There isn't positive items");
-//        System.out.println();
+        System.out.print("MaximumPositive of arrayInt = ");
+        ArrayUtils.maxPositive(arrayInt);
+        System.out.println();
 //
-////        Multiplication
+//        Multiplication
 //        System.out.println("Multiplication of arrayInt = " + multiplication(arrayInt));
 //        System.out.print("Multiplication of arrayDouble = ");
 //        System.out.format("%.4f%n", multiplication(arrayDouble));
-//        System.out.println();
+        System.out.println("Multiplication of arrayInt = " + ArrayUtils.multiplication(arrayInt));
+        System.out.println();
 //
-////        Modulus of first and last array's element
+//        Modulus of first and last array's element
 //        if(arrayInt[arrayInt.length-1] != 0){
 //            System.out.println("Modulus of first and last arrayInt element = " + modulus(arrayInt));
 //        }else {System.out.println("Division by 0!!!");}
@@ -158,14 +164,21 @@ public class Task_1 {
 //            System.out.print("Modulus of first and last arrayDouble element = ");
 //            System.out.format("%.4f%n", modulus(arrayDouble));
 //        }else {System.out.println("Division by 0!!!");}
-//        System.out.println();
+        System.out.print("Modulus of first and last arrayInt element = ");
+        ArrayUtils.modulus(arrayInt);
+        System.out.println();
 //
-////        Second largest element
+//        Second largest element
 //        System.out.println("Second largest element of arrayInt = " + getSecondLargestElement(arrayInt));
 //        System.out.println("Second largest element of arrayDouble = " + getSecondLargestElement(arrayDouble));
+        System.out.println("Second largest element of arrayInt = " + ArrayUtils.getSecondLargestElement(arrayInt));
+        System.out.println();
 
-        System.out.println(Arrays.toString(ArrayUtils.reverse(arrayInt)));
-        System.out.println(Arrays.toString(ArrayUtils.findEvenElements(arrayInt)));
+
+        System.out.println("Reverse arrayInt " + Arrays.toString(ArrayUtils.reverse(arrayInt)));
+        System.out.println();
+
+        System.out.println("All even elements in arrayInt " + Arrays.toString(ArrayUtils.findEvenElements(arrayInt)));
 
     }
 }
