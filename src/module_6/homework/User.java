@@ -47,4 +47,36 @@ public class User {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
+    public boolean isEmpty() {
+        return (firstName == null || lastName == null || firstName.equals("") || lastName.equals("")) || (balance == 0 || salary == 0);
+    }
+
+//    public boolean equals(User user) {
+//
+//        if (salary != user.salary) return false;
+//        if (balance != user.balance) return false;
+//        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+//        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = firstName != null ? firstName.hashCode() : 0;
+//        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+//        result = 31 * result + salary;
+//        result = 31 * result + balance;
+//        return result;
+//    }
+
+    @Override
+    public String toString() {
+        return '\n' + "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", balance=" + balance +
+                '}';
+    }
 }
