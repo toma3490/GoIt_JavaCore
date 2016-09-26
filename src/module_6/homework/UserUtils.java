@@ -7,32 +7,33 @@ public class UserUtils {
 
     public static User[] uniqueUsers(User[] users) {
         ArrayList<User> uniqueUsersList = new ArrayList<User>();
-//
+
 //        for (User user : users) {
 //            if (uniqueUsersList.indexOf(user) != uniqueUsersList.lastIndexOf(user)) {
 //                uniqueUsersList.remove(uniqueUsersList.lastIndexOf(user));
 //            }
 //        }
-//
-//        User[] uniqueUsersArray = new User[uniqueUsersList.size()];
-//        uniqueUsersList.toArray(uniqueUsersArray);
-        int countDuplicate = 0;
-        boolean isAdded = false;
 
-//        String s1[] = {"hello","hi","j2ee","j2ee","sql","jdbc","hello","jdbc","hybernet","j2ee","hello","hello","hybernet"};
+        int countDuplicate = 0;
 
         for(int i = 0; i < users.length; i++) {
-            for(int j = i + 1; j < users.length; j++) {
-                if(users[i].equals(users[j])){
+            for (int j = 1; j < users.length; j++) {
+                if (i == j){
+                    j++;
+                }
+                if(users[i] == null){
+                    break;
+                }
+                if (users[i].equals(users[j]) || users[j] == null) {
                     countDuplicate++;
                     users[j] = null;
                 }
             }
-            if(countDuplicate == 0) {
+            if (countDuplicate == 0 && users[i] != null) {
                 uniqueUsersList.add(users[i]);
-            } else {
+            }
+            if(countDuplicate != 0 && users[i] != null){
                 uniqueUsersList.add(users[i]);
-//                isAdded = true;
                 countDuplicate = 0;
             }
         }
