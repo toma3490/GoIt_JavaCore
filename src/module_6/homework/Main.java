@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         User[] users = new User[6];
-        users[0] = new User("Thomas", "Anderson", 500, 400);
+        users[0] = new User(null, null, 0, 0);
         users[1] = new User("Thomas", "Anderson", 500, 700);
         users[2] = new User("Thomas", "Anderson", 500, 400);
         users[3] = new User("Thomass", "Anderson", 500, 400);

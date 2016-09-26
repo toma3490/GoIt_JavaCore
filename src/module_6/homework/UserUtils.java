@@ -29,7 +29,7 @@ public class UserUtils {
                     users[j] = null;
                 }
             }
-            if (countDuplicate == 0 && users[i] != null) {
+            if (countDuplicate == 0 && users[i] != null && !users[i].isEmpty()) {
                 uniqueUsersList.add(users[i]);
             }
             if(countDuplicate != 0 && users[i] != null){
