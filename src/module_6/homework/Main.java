@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
         User[] users = new User[6];
         users[0] = new User("Thomas", "Anderson", 500, 400);
-        users[1] = new User("Thomas", "Anderson", 500, 700);
-        users[2] = new User("Thomas", "Anderson", 500, 700);
+        users[1] = new User("Thomas", null, 500, 0);
+        users[2] = new User("Thomas", null, 500, 700);
         users[3] = new User("Thomas", "Anderson", 500, 400);
         users[4] = new User("Thomas", "Anderson", 500, 700);
-        users[5] = new User("Thomas", "Anderson", 500, 700);
+        users[5] = new User(null, null, 0, 0);
 
 //        System.out.println(Arrays.toString(users));
         System.out.println("Unique users" + '\n' + Arrays.toString(UserUtils.uniqueUsers(users)) + '\n');

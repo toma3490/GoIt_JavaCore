@@ -2,35 +2,40 @@ package module_6.homework;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class UserUtils {
 
     public static User[] uniqueUsers(User[] users) {
-
-        ArrayList<User> usersList = new ArrayList<User>(Arrays.asList(users));
-//        int counter = 0;
-//        for (int i = 0; i < users.length; i++) {
-//            for (int j = 0; j < users.length; j++) {
-//                if (users[i].equals(users[j])) {
-//                    counter++;
-//                    usersList.remove(j);
-//                }
-//            }
-//            if (counter == 0){
-//                uniqueUsersList.add(users[i]);
-//            }
-//            else {
-//                uniqueUsersList.remove(i);
-//                counter = 0;
+        ArrayList<User> uniqueUsersList = new ArrayList<User>();
+//
+//        for (User user : users) {
+//            if (uniqueUsersList.indexOf(user) != uniqueUsersList.lastIndexOf(user)) {
+//                uniqueUsersList.remove(uniqueUsersList.lastIndexOf(user));
 //            }
 //        }
+//
+//        User[] uniqueUsersArray = new User[uniqueUsersList.size()];
+//        uniqueUsersList.toArray(uniqueUsersArray);
+        int countDuplicate = 0;
+        boolean isAdded = false;
 
-        Set<User> userSet = new HashSet<User>(usersList);
-        userSet.addAll(usersList);
-        ArrayList<User> uniqueUsersList = new ArrayList<User>();
-        uniqueUsersList.addAll(userSet);
+//        String s1[] = {"hello","hi","j2ee","j2ee","sql","jdbc","hello","jdbc","hybernet","j2ee","hello","hello","hybernet"};
+
+        for(int i = 0; i < users.length; i++) {
+            for(int j = i + 1; j < users.length; j++) {
+                if(users[i].equals(users[j])){
+                    countDuplicate++;
+                    users[j] = null;
+                }
+            }
+            if(countDuplicate == 0) {
+                uniqueUsersList.add(users[i]);
+            } else {
+                uniqueUsersList.add(users[i]);
+//                isAdded = true;
+                countDuplicate = 0;
+            }
+        }
 
         User[] uniqueUsersArray = new User[uniqueUsersList.size()];
         uniqueUsersList.toArray(uniqueUsersArray);
@@ -53,7 +58,9 @@ public class UserUtils {
 
     public static final User[] paySalaryToUsers(User[] users){
         for (User user : users) {
-            user.setBalance(user.getBalance() + user.getSalary());
+            if (!user.isEmpty()){
+                user.setBalance(user.getBalance() + user.getSalary());
+            }
         }
         return users;
     }
