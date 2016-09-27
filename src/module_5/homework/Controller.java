@@ -38,21 +38,6 @@ public class Controller {
 
         if (rooms1.length == 0 && rooms2.length == 0 && rooms3.length == 0) {
             System.out.println("Sorry, there is no result with such params.");
-        }else if(rooms1.length == 0 && rooms2.length == 0){
-            System.arraycopy(rooms3, 0, resultRooms, 0, rooms3.length);
-        }else if(rooms1.length == 0 && rooms3.length == 0){
-            System.arraycopy(rooms2, 0, resultRooms, 0, rooms2.length);
-        }else if(rooms1.length == 0){
-            System.arraycopy(rooms2, 0, resultRooms, 0, rooms2.length);
-            System.arraycopy(rooms3, 0, resultRooms, rooms2.length, rooms3.length);
-        }else if(rooms2.length == 0 && rooms3.length == 0){
-            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
-        }else if(rooms2.length == 0){
-            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
-            System.arraycopy(rooms3, 0, resultRooms, rooms1.length, rooms3.length);
-        }else if(rooms3.length == 0){
-            System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
-            System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
         }else{
             System.arraycopy(rooms1, 0, resultRooms, 0, rooms1.length);
             System.arraycopy(rooms2, 0, resultRooms, rooms1.length, rooms2.length);
