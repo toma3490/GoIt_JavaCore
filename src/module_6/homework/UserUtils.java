@@ -1,11 +1,14 @@
 package module_6.homework;
 
+import module_5.homework.Room;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserUtils {
 
     public static User[] uniqueUsers(User[] users) {
+        User[] tempArray = (User[])users.clone();
         ArrayList<User> uniqueUsersList = new ArrayList<User>();
 
 //        for (User user : users) {
@@ -16,24 +19,24 @@ public class UserUtils {
 
         int countDuplicate = 0;
 
-        for(int i = 0; i < users.length; i++) {
-            for (int j = 1; j < users.length; j++) {
+        for(int i = 0; i < tempArray.length; i++) {
+            for (int j = 1; j < tempArray.length; j++) {
                 if (i == j){
                     j++;
                 }
-                if(users[i] == null){
+                if(tempArray[i] == null){
                     break;
                 }
-                if (users[i].equals(users[j]) || users[j] == null) {
+                if (tempArray[i].equals(tempArray[j]) || tempArray[j] == null) {
                     countDuplicate++;
-                    users[j] = null;
+                    tempArray[j] = null;
                 }
             }
-            if (countDuplicate == 0 && users[i] != null && !users[i].isEmpty()) {
-                uniqueUsersList.add(users[i]);
+            if (countDuplicate == 0 && tempArray[i] != null && !tempArray[i].isEmpty()) {
+                uniqueUsersList.add(tempArray[i]);
             }
-            if(countDuplicate != 0 && users[i] != null){
-                uniqueUsersList.add(users[i]);
+            if(countDuplicate != 0 && tempArray[i] != null){
+                uniqueUsersList.add(tempArray[i]);
                 countDuplicate = 0;
             }
         }
