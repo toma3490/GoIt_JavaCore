@@ -14,9 +14,9 @@ public class Main {
 
 //        System.out.println(Arrays.toString(users));
         System.out.println("Unique users" + '\n' + Arrays.toString(UserUtils.uniqueUsers(users)) + '\n');
-//        System.out.println("Users with conditional balance " + '\n' + Arrays.toString(UserUtils.usersWithConditionalBalance(users, 400)) + '\n');
-//        System.out.println("Pay salary to users " + '\n'  + Arrays.toString(UserUtils.paySalaryToUsers(users)) + '\n');
-//        System.out.println("Get users Id " + '\n' + Arrays.toString(UserUtils.getUsersId(users)) + '\n' );
-//        System.out.println("After deleting empty users " + '\n' + Arrays.toString(UserUtils.deleteEmptyUsers(users)));
+        System.out.println("Users with conditional balance " + '\n' + Arrays.toString(UserUtils.usersWithConditionalBalance(users, 400)) + '\n');
+        System.out.println("Pay salary to users " + '\n'  + Arrays.toString(UserUtils.paySalaryToUsers(users)) + '\n');
+        System.out.println("Get users Id " + '\n' + Arrays.toString(UserUtils.getUsersId(users)) + '\n' );
+        System.out.println("After deleting empty users " + '\n' + Arrays.toString(UserUtils.deleteEmptyUsers(users)));
     }
 }
