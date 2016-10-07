@@ -1,8 +1,10 @@
 package module_7.homework.hw_mod_5_update;
 
+import java.util.List;
+
 public interface DAO {
-    Room save(Room room);
-    boolean delete(Room room);
-    Room update(Room room);
-    Room findById(long id);
+    List<Room> save(List<Room> room);
+    boolean delete(List<Room> room);
+    List<Room> update(List<Room> room);
+    List<Room> findById(long id);
 }
