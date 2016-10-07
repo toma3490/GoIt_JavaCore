@@ -1,4 +1,4 @@
-package module_7.warmUp;
+package module_7.practice.warmUp;
 
 import java.util.Arrays;
 import java.util.Comparator;

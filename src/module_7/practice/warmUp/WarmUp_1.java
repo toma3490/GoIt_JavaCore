@@ -1,7 +1,6 @@
-package module_7.warmUp;
+package module_7.practice.warmUp;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class WarmUp_1 {
