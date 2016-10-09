@@ -18,19 +18,24 @@ public class Main_7_2 {
         User user9 = new User("Tom", "Sawyer", "San Fransisco", 700);
         User user10 = new User("Lisbeth", "Salander", "Stockholm", 5200);
         List<Order> list = new ArrayList<>(10);
-        list.add(new Order(1100, Currency.USD, "BarbyDoll", "EBay", user1));
+        list.add(new Order(1100, Currency.USD, "Lego", "EBay", user1));
         list.add(new Order(3700, Currency.USD, "Bike", "Amazon", user2));
-        list.add(new Order(1100, Currency.USD, "Shuriken", "EBay", user3));
+        list.add(new Order(1100, Currency.USD, "Knife", "EBay", user3));
         list.add(new Order(2230, Currency.UAH, "Knife", "Slando", user4));
-        list.add(new Order(3700, Currency.USD, "Couch", "OLX", user5));
+        list.add(new Order(3700, Currency.USD, "Ski", "OLX", user5));
         list.add(new Order(2300, Currency.USD, "BookReader", "Amazon", user6));
         list.add(new Order(1270, Currency.UAH, "Lego", "EBay", user7));
         list.add(new Order(3700, Currency.USD, "Ski", "SportsDirect", user8));
         list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
-        list.add(new Order(2740, Currency.UAH, "Monitor", "OLX", user10));
+        list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
 
-//        list.sort(new DecreasePrice());
-        list.sort(new IncreasePrice());
+        list.sort(new SortByPrice());
+        System.out.println(list);
+        System.out.println();
+        list.sort(new SortByPriceAndCity());
+        System.out.println(list);
+        System.out.println();
+        list.sort(new SortByItemNameAndShopIdAndSity());
         System.out.println(list);
     }
 }
