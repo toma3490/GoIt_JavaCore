@@ -3,7 +3,9 @@ package module_7.homework;
 import module_4.homework.Currency;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main_7_2 {
     public static void main(String[] args) {
@@ -17,7 +19,8 @@ public class Main_7_2 {
         User user8 = new User("Allan", "Quatermain", "London", 2300);
         User user9 = new User("Tom", "Sawyer", "San Fransisco", 700);
         User user10 = new User("Lisbeth", "Salander", "Stockholm", 5200);
-        List<Order> list = new ArrayList<>(10);
+
+        List<Order> list = new ArrayList<>(12);
         list.add(new Order(1100, Currency.USD, "Lego", "EBay", user1));
         list.add(new Order(3700, Currency.USD, "Bike", "Amazon", user2));
         list.add(new Order(1100, Currency.USD, "Knife", "EBay", user3));
@@ -26,6 +29,8 @@ public class Main_7_2 {
         list.add(new Order(2300, Currency.USD, "BookReader", "Amazon", user6));
         list.add(new Order(1270, Currency.UAH, "Lego", "EBay", user7));
         list.add(new Order(3700, Currency.USD, "Ski", "SportsDirect", user8));
+        list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
+        list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
         list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
         list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
 
@@ -37,5 +42,9 @@ public class Main_7_2 {
         System.out.println();
         list.sort(new SortByItemNameAndShopIdAndSity());
         System.out.println(list);
+
+        Set<Order> set = new HashSet<>(list);
+        System.out.println("Set____________________________________________________");
+        System.out.println(set);
     }
 }
