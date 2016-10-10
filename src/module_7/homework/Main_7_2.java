@@ -2,10 +2,7 @@ package module_7.homework;
 
 import module_4.homework.Currency;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main_7_2 {
     public static void main(String[] args) {
@@ -34,17 +31,49 @@ public class Main_7_2 {
         list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
         list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
 
-        list.sort(new SortByPrice());
-        System.out.println(list);
-        System.out.println();
-        list.sort(new SortByPriceAndCity());
-        System.out.println(list);
-        System.out.println();
-        list.sort(new SortByItemNameAndShopIdAndSity());
-        System.out.println(list);
+//        list.sort(new SortByPrice());
+//        System.out.println(list);
+//        System.out.println();
+//        list.sort(new SortByPriceAndCity());
+//        System.out.println(list);
+//        System.out.println();
+//        list.sort(new SortByItemNameAndShopIdAndCity());
+//        System.out.println(list);
+//
+//        Set<Order> set = new HashSet<>(list);
+//        System.out.println("Set____________________________________________________");
+//        System.out.println(set);
 
-        Set<Order> set = new HashSet<>(list);
-        System.out.println("Set____________________________________________________");
-        System.out.println(set);
+//        Iterator<Order> iterator = list.iterator();
+//        while (iterator.hasNext()){
+//            if (iterator.next().getPrice() < 1500){
+//                iterator.remove();
+//            }
+//        }
+//
+//        System.out.println(list);
+
+//        List<Order> listUSD = new ArrayList<>();
+//        List<Order> listUAH = new ArrayList<>();
+//        for (Order order : list) {
+//            if (order.getCurrency() == Currency.USD) {
+//                listUSD.add(order);
+//            }else{
+//                listUAH.add(order);
+//            }
+//        }
+//
+//        System.out.println(listUAH);
+//        System.out.println();
+//        System.out.println(listUSD);
+
+        Set<Order> set = new TreeSet<>(list);
+        List<Order> newList = new ArrayList<>(set);
+        System.out.println(newList);
+
+        List<Order> firstList = newList.subList(0, 5);
+        System.out.println(firstList);
+
+
     }
 }

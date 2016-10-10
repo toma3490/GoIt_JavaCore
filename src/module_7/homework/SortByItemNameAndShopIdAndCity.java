@@ -2,7 +2,7 @@ package module_7.homework;
 
 import java.util.Comparator;
 
-public class SortByItemNameAndShopIdAndSity implements Comparator<Order> {
+public class SortByItemNameAndShopIdAndCity implements Comparator<Order> {
 
     @Override
     public int compare(Order order1, Order order2){

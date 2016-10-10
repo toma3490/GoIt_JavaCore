@@ -2,7 +2,7 @@ package module_7.homework;
 
 import module_4.homework.Currency;
 
-public class Order {
+public class Order implements Comparable<Order>{
     private long id;
     private static long nextId = 0;
     private int price;
@@ -39,6 +39,11 @@ public class Order {
 
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public int compareTo(Order otherOrder) {
+        return this.getUser().getCity().compareTo(otherOrder.getUser().getCity());
     }
 
     @Override
