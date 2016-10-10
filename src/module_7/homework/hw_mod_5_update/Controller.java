@@ -34,8 +34,8 @@ public class Controller {
 
         DAOImpl daoImpl = new DAOImpl();
 
-        for (List<Room> rooms : resultOfRequest) {
-            daoImpl.save((Room) rooms);
+        for (int i = 0; i < resultOfRequest.size(); i++) {
+            daoImpl.save(resultOfRequest.get(i));
         }
 
         return resultOfRequest;
