@@ -1,4 +1,4 @@
-package module_7.warmUp;
+package module_7.practice.warmUp;
 
 import module_7.practice.task_1.User;
 
