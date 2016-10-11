@@ -1,5 +1,6 @@
 package module_7.homework;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import module_4.homework.Currency;
 
 import java.util.*;
@@ -34,25 +35,38 @@ public class Main_7_2 {
         list.sort(new SortByPrice());
         System.out.println(list);
         System.out.println();
+
         list.sort(new SortByPriceAndCity());
         System.out.println(list);
         System.out.println();
+
         list.sort(new SortByItemNameAndShopIdAndCity());
         System.out.println(list);
 
-        Set<Order> set = new HashSet<>(list);
-        System.out.println("Set____________________________________________________");
-        System.out.println(set);
+        System.out.println(deleteDuplicates(list));
 
+        System.out.println(filterPrice(list));
+
+        splitListByCurrency(list);
+
+        System.out.println(splitListByUniqueCities(list));
+    }
+
+    private static Set<Order> deleteDuplicates(List<Order> list){
+        return new HashSet<>(list);
+    }
+
+    private static List<Order> filterPrice(List<Order> list){
         Iterator<Order> iterator = list.iterator();
         while (iterator.hasNext()){
             if (iterator.next().getPrice() < 1500){
                 iterator.remove();
             }
         }
+        return list;
+    }
 
-        System.out.println(list);
-
+    private static void splitListByCurrency(List<Order> list){
         List<Order> listUSD = new ArrayList<>();
         List<Order> listUAH = new ArrayList<>();
         for (Order order : list) {
@@ -62,11 +76,11 @@ public class Main_7_2 {
                 listUAH.add(order);
             }
         }
-
-        System.out.println(listUAH);
-        System.out.println();
         System.out.println(listUSD);
+        System.out.println(listUAH);
+    }
 
+    private static List<List<Order>> splitListByUniqueCities (List<Order> list) {
         Set<Order> set1 = new TreeSet<>(list);
         List<Order> newList = new ArrayList<>(set1);
         List<List<Order>> lists = new ArrayList<>();
@@ -76,7 +90,6 @@ public class Main_7_2 {
             temp.add(order);
             lists.add(temp);
         }
-
-        System.out.println(lists);
+        return lists;
     }
 }
