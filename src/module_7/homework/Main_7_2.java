@@ -69,10 +69,11 @@ public class Main_7_2 {
 
         Set<Order> set = new TreeSet<>(list);
         List<Order> newList = new ArrayList<>(set);
-        System.out.println(newList);
+        List<List<Order>> lists = new ArrayList<>();
 
-        List<Order> firstList = newList.subList(0, 5);
-        System.out.println(firstList);
+        for (Order order : newList) {
+//            lists.add(order);
+        }
 
 
     }
