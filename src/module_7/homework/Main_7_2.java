@@ -31,44 +31,44 @@ public class Main_7_2 {
         list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
         list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
 
-//        list.sort(new SortByPrice());
-//        System.out.println(list);
-//        System.out.println();
-//        list.sort(new SortByPriceAndCity());
-//        System.out.println(list);
-//        System.out.println();
-//        list.sort(new SortByItemNameAndShopIdAndCity());
-//        System.out.println(list);
-//
-//        Set<Order> set = new HashSet<>(list);
-//        System.out.println("Set____________________________________________________");
-//        System.out.println(set);
+        list.sort(new SortByPrice());
+        System.out.println(list);
+        System.out.println();
+        list.sort(new SortByPriceAndCity());
+        System.out.println(list);
+        System.out.println();
+        list.sort(new SortByItemNameAndShopIdAndCity());
+        System.out.println(list);
 
-//        Iterator<Order> iterator = list.iterator();
-//        while (iterator.hasNext()){
-//            if (iterator.next().getPrice() < 1500){
-//                iterator.remove();
-//            }
-//        }
-//
-//        System.out.println(list);
+        Set<Order> set = new HashSet<>(list);
+        System.out.println("Set____________________________________________________");
+        System.out.println(set);
 
-//        List<Order> listUSD = new ArrayList<>();
-//        List<Order> listUAH = new ArrayList<>();
-//        for (Order order : list) {
-//            if (order.getCurrency() == Currency.USD) {
-//                listUSD.add(order);
-//            }else{
-//                listUAH.add(order);
-//            }
-//        }
-//
-//        System.out.println(listUAH);
-//        System.out.println();
-//        System.out.println(listUSD);
+        Iterator<Order> iterator = list.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next().getPrice() < 1500){
+                iterator.remove();
+            }
+        }
 
-        Set<Order> set = new TreeSet<>(list);
-        List<Order> newList = new ArrayList<>(set);
+        System.out.println(list);
+
+        List<Order> listUSD = new ArrayList<>();
+        List<Order> listUAH = new ArrayList<>();
+        for (Order order : list) {
+            if (order.getCurrency() == Currency.USD) {
+                listUSD.add(order);
+            }else{
+                listUAH.add(order);
+            }
+        }
+
+        System.out.println(listUAH);
+        System.out.println();
+        System.out.println(listUSD);
+
+        Set<Order> set1 = new TreeSet<>(list);
+        List<Order> newList = new ArrayList<>(set1);
         List<List<Order>> lists = new ArrayList<>();
 
         for (Order order : newList) {
