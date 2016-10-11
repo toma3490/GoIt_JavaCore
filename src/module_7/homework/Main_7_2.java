@@ -72,9 +72,11 @@ public class Main_7_2 {
         List<List<Order>> lists = new ArrayList<>();
 
         for (Order order : newList) {
-//            lists.add(order);
+            List<Order> temp = new ArrayList<>();
+            temp.add(order);
+            lists.add(temp);
         }
 
-
+        System.out.println(lists);
     }
 }
