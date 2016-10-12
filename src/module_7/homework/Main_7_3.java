@@ -55,7 +55,7 @@ public class Main_7_3 {
         double maxPrice = order.getPrice();
         while (iterator.hasNext()){
             if (iterator.next().getPrice() > maxPrice){
-//                maxPrice = iterator.next().getPrice();
+                maxPrice = iterator.next().getPrice();
                 order = iterator.next();
             }
         }
