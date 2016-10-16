@@ -34,7 +34,12 @@ public class Main_7_3 {
         System.out.println(set);
 
         System.out.println(isContain(set, "Petrov"));
-        System.out.println(getLargestPrice(set));
+        Order.PriceComparator priceComparator = new Order.PriceComparator();
+        Iterator<Order> iterator = set.iterator();
+        while (iterator.hasNext()){
+
+        }
+//        System.out.println(getLargestPrice(set));
         System.out.println(deleteByCurrency(set, Currency.USD));
     }
 
@@ -50,14 +55,16 @@ public class Main_7_3 {
     }
 
     private static Order getLargestPrice(Set<Order> set){
+        Order.PriceComparator comparator = new Order.PriceComparator();
         Iterator<Order> iterator = set.iterator();
         Order order = iterator.next();
         double maxPrice = order.getPrice();
         while (iterator.hasNext()){
-            if (iterator.next().getPrice() > maxPrice){
-                maxPrice = iterator.next().getPrice();
-                order = iterator.next();
-            }
+          comparator.compare(iterator.next(), order);
+//            if (iterator.next().getPrice() > maxPrice){
+//                maxPrice = iterator.next().getPrice();
+//                order = iterator.next();
+//            }
         }
         return order;
     }

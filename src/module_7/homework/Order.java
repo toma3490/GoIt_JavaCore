@@ -2,6 +2,8 @@ package module_7.homework;
 
 import module_4.homework.Currency;
 
+import java.util.Comparator;
+
 public class Order implements Comparable<Order>{
     private long id;
     private static long nextId = 0;
@@ -10,6 +12,7 @@ public class Order implements Comparable<Order>{
     private String itemName;
     private String shopIdentificator;
     private User user;
+    private OrderEnum sortingIndex;
 
     public Order(int price, Currency currency, String itemName, String shopIdentificator, User user) {
         this.price = price;
@@ -43,7 +46,15 @@ public class Order implements Comparable<Order>{
 
     @Override
     public int compareTo(Order otherOrder) {
-        return this.getUser().getCity().compareTo(otherOrder.getUser().getCity());
+    switch (sortingIndex) {
+        case PRICE:
+            return this.getPrice() - otherOrder.getPrice();
+        case USER_CITY:
+            return this.getUser().getCity().compareTo(otherOrder.getUser().getCity());
+        default:
+            throw new EnumConstantNotPresentException(OrderEnum.class,sortingIndex.name());
+        }
+//        return this.getUser().getCity().compareTo(otherOrder.getUser().getCity());
     }
 
     @Override
@@ -82,5 +93,19 @@ public class Order implements Comparable<Order>{
                 ", shopIdentificator='" + shopIdentificator + '\'' +
                 ", user=" + user.toString() +
                 '}';
+    }
+
+    public static class PriceComparator implements Comparator<Order> {
+        @Override
+        public int compare(Order order1, Order order2) {
+            return order1.getPrice() - order2.getPrice();
+        }
+    }
+
+    public static class UserCityComparator implements Comparator<Order> {
+        @Override
+        public int compare(Order order1, Order order2) {
+            return order1.getUser().getCity().compareTo(order2.getUser().getCity());
+        }
     }
 }
