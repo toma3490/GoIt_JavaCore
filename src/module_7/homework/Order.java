@@ -2,8 +2,6 @@ package module_7.homework;
 
 import module_4.homework.Currency;
 
-import java.util.Comparator;
-
 public class Order implements Comparable<Order>{
     private long id;
     private static long nextId = 0;
