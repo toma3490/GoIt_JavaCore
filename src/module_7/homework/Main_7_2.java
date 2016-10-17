@@ -31,23 +31,23 @@ public class Main_7_2 {
         list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
         list.add(new Order(1200, Currency.UAH, "Vase", "Slando", user9));
         list.add(new Order(2740, Currency.UAH, "Bike", "OLX", user10));
-//
-//        list.sort(new SortByPrice());
-//        System.out.println(list);
-//        System.out.println();
-//
-//        list.sort(new SortByPriceAndCity());
-//        System.out.println(list);
-//        System.out.println();
-//
-//        list.sort(new SortByItemNameAndShopIdAndCity());
-//        System.out.println(list);
-//
-//        System.out.println(deleteDuplicates(list));
-//
-//        System.out.println(filterPrice(list));
-//
-//        splitListByCurrency(list);
+
+        list.sort(new SortByPrice());
+        System.out.println(list);
+        System.out.println();
+
+        list.sort(new SortByPriceAndCity());
+        System.out.println(list);
+        System.out.println();
+
+        list.sort(new SortByItemNameAndShopIdAndCity());
+        System.out.println(list);
+
+        System.out.println(deleteDuplicates(list));
+
+        System.out.println(filterPrice(list));
+
+        splitListByCurrency(list);
 
         System.out.println(splitListByUniqueCities(list));
     }
@@ -84,9 +84,13 @@ public class Main_7_2 {
         list.sort(new SortByCity());
         ArrayList<Order> temp = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
-            if((i + 1) == list.size() && !list.get(i).getUser().getCity().equals(list.get(list.size()).getUser().getCity())){
-                temp.add(list.get(i + 1));
-                continue;
+            if(i == list.size() - 1){
+                if(list.get(list.size() - 1).getUser().getCity().equals(list.get(list.size() - 2).getUser().getCity())){
+                    temp.add(list.get(list.size() - 2));
+                    continue;
+                }else{
+                    continue;
+                }
             }
             if (!list.get(i).getUser().getCity().equals(list.get(i + 1).getUser().getCity())){
                 temp.add(list.get(i));
@@ -96,8 +100,6 @@ public class Main_7_2 {
     }
 
     private static List<List<Order>> splitListByUniqueCities (List<Order> list) {
-//        Set<Order> set1 = new TreeSet<>(list);
-//        List<Order> newList = new ArrayList<>(set1);
         List<Order> newList = findUniqueCities(list);
         List<List<Order>> lists = new ArrayList<>();
 
