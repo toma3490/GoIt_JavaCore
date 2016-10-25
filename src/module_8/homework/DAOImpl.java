@@ -1,41 +1,46 @@
 package module_8.homework;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class DAOImpl <T> implements AbstractDAO<T>{
 
-    private List<T> list;
+    private List<T> listDAO = new ArrayList<T>();
 
     @Override
     public T save(T item) {
-        list.add(item);
+        listDAO.add(item);
         return item;
     }
 
     @Override
     public void delete(T item) {
-        list.remove(item);
+        listDAO.remove(item);
     }
 
     @Override
     public void deleteAll(List<T> list) {
-        Iterator<T> iterator = list.iterator();
-        while (iterator.hasNext()){
-            list.remove(iterator.next());
-        }
+        listDAO.removeAll(list);
     }
 
     @Override
     public void saveAll(List<T> list) {
-        Iterator<T> iterator = list.iterator();
-        while (iterator.hasNext()){
-            list.add(iterator.next());
-        }
+        listDAO.addAll(list);
+        System.out.println("Data was saved");
+    }
+
+    public List<T> getListDAO() {
+        return listDAO;
     }
 
     @Override
-    public List<T> getList() {
-        return list;
+    public void deleteById(long id) {
+
+    }
+
+    @Override
+    public T get(long id) {
+        return null;
     }
 }

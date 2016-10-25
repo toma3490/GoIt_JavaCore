@@ -3,7 +3,6 @@ package module_10.practice;
 import java.util.HashMap;
 import java.util.Map;
 
-import static jdk.nashorn.internal.objects.Global.print;
 
 public class PersonRunner {
     public static void main(String[] args) {
