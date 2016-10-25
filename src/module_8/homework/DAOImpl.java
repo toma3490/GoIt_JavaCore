@@ -9,7 +9,8 @@ public class DAOImpl <T> implements AbstractDAO<T>{
 
     @Override
     public T save(T item) {
-        return null;
+        list.add(item);
+        return item;
     }
 
     @Override
@@ -27,11 +28,14 @@ public class DAOImpl <T> implements AbstractDAO<T>{
 
     @Override
     public void saveAll(List<T> list) {
-
+        Iterator<T> iterator = list.iterator();
+        while (iterator.hasNext()){
+            list.add(iterator.next());
+        }
     }
 
     @Override
     public List<T> getList() {
-        return null;
+        return list;
     }
 }
