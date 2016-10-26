@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         DAOImpl<User> userDAO = new DAOImpl<User>();
-        UserDAO userDAO1 = new UserDAO();
+        UserDAOImpl userDAOImpl1 = new UserDAOImpl();
 
         List<User> users = new ArrayList<>();
         users.add(new User("Logan"));
@@ -19,6 +19,6 @@ public class Main {
 
         System.out.println(userDAO.save(users.get(0)));
         userDAO.saveAll(users);
-        System.out.println(userDAO1.save(users.get(1)));
+        System.out.println(userDAOImpl1.save(users.get(1)));
     }
 }

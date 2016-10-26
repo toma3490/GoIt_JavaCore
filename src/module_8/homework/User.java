@@ -1,6 +1,6 @@
 package module_8.homework;
 
-public class User {
+public class User extends BaseEntity {
     private long id;
     private static long nextId = 0;
     private String name;
@@ -9,6 +9,7 @@ public class User {
         this.name = name;
         id = ++nextId;
     }
+
 
     public long getId() {
         return id;

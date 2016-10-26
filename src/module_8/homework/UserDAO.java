@@ -1,13 +1,13 @@
 package module_8.homework;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO extends DAOImpl<User>{
-//    private List<User> userDAO = new ArrayList<>();
-//
-//    public User save(User user) {
-//        userDAO.add(user);
-//        return user;
-//    }
+public interface UserDAO {
+    User save (User user);
+    void delete(User user);
+    void deleteAll(List<User> users);
+    void saveAll(List<User> users);
+    List<User> getList();
+    void deleteById(long id);
+    User getById(long id);
 }

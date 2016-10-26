@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DAOImpl <T> implements AbstractDAO<T>{
+public class DAOImpl <T extends BaseEntity> implements AbstractDAO<T>{
 
     private List<T> listDAO = new ArrayList<T>();
 
@@ -30,17 +30,19 @@ public class DAOImpl <T> implements AbstractDAO<T>{
         System.out.println("Data was saved");
     }
 
-    public List<T> getListDAO() {
-        return listDAO;
-    }
-
     @Override
     public void deleteById(long id) {
 
     }
 
+
     @Override
-    public T get(long id) {
+    public List<T> getList() {
+        return null;
+    }
+
+    @Override
+    public T getById(long id) {
         return null;
     }
 }
