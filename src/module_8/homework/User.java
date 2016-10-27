@@ -10,7 +10,6 @@ public class User extends BaseEntity {
         id = ++nextId;
     }
 
-
     public long getId() {
         return id;
     }

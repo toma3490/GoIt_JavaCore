@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DAOImpl <T extends BaseEntity> implements AbstractDAO<T>{
+public class AbstractDAOImpl<T extends BaseEntity> implements AbstractDAO<T>{
 
-    private List<T> listDAO = new ArrayList<T>();
+    private List<T> listDAO = new ArrayList<>();
 
     @Override
     public T save(T item) {
@@ -31,18 +31,26 @@ public class DAOImpl <T extends BaseEntity> implements AbstractDAO<T>{
     }
 
     @Override
-    public void deleteById(long id) {
-
-    }
-
-
-    @Override
     public List<T> getList() {
-        return null;
+        return listDAO;
     }
 
     @Override
     public T getById(long id) {
+        for (T item : listDAO) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
         return null;
+    }
+
+    @Override
+    public void deleteById(long id) {
+        for (T item : listDAO) {
+            if (item.getId() == id) {
+                listDAO.remove(item);
+            }
+        }
     }
 }
