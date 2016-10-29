@@ -82,17 +82,10 @@ public class Main_7_2 {
     private static List<Order> findUniqueCities(List<Order> list){
         list.sort(new SortByCity());
         ArrayList<Order> temp = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if(i == list.size() - 1){
-                if(list.get(list.size() - 1).getUser().getCity().equals(list.get(list.size() - 2).getUser().getCity())){
-                    temp.add(list.get(list.size() - 2));
-                    continue;
-                }else{
-                    continue;
-                }
-            }
-            if (!list.get(i).getUser().getCity().equals(list.get(i + 1).getUser().getCity())){
-                temp.add(list.get(i));
+        temp.add(list.get(0));
+        for (Order order : list) {
+            if (!order.getUser().getCity().equals(temp.get(temp.size() - 1).getUser().getCity())) {
+                temp.add(order);
             }
         }
         return temp;
