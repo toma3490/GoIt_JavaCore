@@ -1,7 +1,6 @@
 package module_8.homework;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class AbstractDAOImpl<T extends BaseEntity> implements AbstractDAO<T>{
