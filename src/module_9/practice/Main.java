@@ -1,4 +1,4 @@
-package module_9;
+package module_9.practice;
 
 import module_7.homework.Order;
 import module_7.homework.User;
