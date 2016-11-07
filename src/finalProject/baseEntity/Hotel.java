@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.baseEntity;
 
 import java.util.List;
 

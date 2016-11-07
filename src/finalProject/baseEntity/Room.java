@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.baseEntity;
 
 public class Room {
     private int persons;

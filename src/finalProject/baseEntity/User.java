@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.baseEntity;
 
 public class User {
     private String name;

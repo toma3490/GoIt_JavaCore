@@ -1,4 +1,4 @@
-package finalProject;
+package finalProject.DAO;
 
 import java.util.List;
 
