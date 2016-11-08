@@ -1,11 +1,12 @@
 package finalProject.baseEntity;
 
-public class Room {
+public class Room implements Identity{
     private int persons;
     private int price;
     private long id;
     private static long nextId = 0;
-    User userReserved;
+    private long userId;
+    private long hotelId;
 
     public Room(int persons, int price) {
         this.persons = persons;
@@ -25,12 +26,16 @@ public class Room {
         return id;
     }
 
-    public User getUserReserved() {
-        return userReserved;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUserReserved(User userReserved) {
-        this.userReserved = userReserved;
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getHotelId() {
+        return hotelId;
     }
 
     @Override
@@ -56,12 +61,12 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "persons = " + persons +
+        return "\n" + "Room{" +
+                "id = " + id +
+                ", persons = " + persons +
                 ", price = " + price +
-                ", id = " + id +
-                ", userReserved = " + userReserved +
+                ", userId = " + userId +
+                ", hotelId = " + hotelId +
                 '}';
     }
-
 }

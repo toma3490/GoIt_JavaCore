@@ -8,4 +8,5 @@ public interface AbstractDAO<T> {
     void delete(T item);
     void deleteAll(List<T> list);
     List<T> getList();
+    T getById(long id);
 }

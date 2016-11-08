@@ -1,9 +1,10 @@
 package finalProject.baseEntity;
 
-public class User {
+public class User implements Identity{
     private String name;
     private String lastName;
     private int age;
+    private long id;
 
     public User(String name, String lastName, int age) {
         this.name = name;
@@ -24,6 +25,11 @@ public class User {
     }
 
     @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
@@ -31,6 +37,7 @@ public class User {
         User user = (User) object;
 
         if (age != user.age) return false;
+        if (id != user.id) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
 
@@ -41,15 +48,17 @@ public class User {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + age;
+        result = 31 * result + (int) (id ^ (id >>> 32));
         return result;
     }
 
     @Override
     public String toString() {
-        return "User {" +
-                "name = '" + name + '\'' +
-                ", lastName = '" + lastName + '\'' +
-                ", age = " + age +
+        return "User{" +
+                "name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", id=" + id +
                 '}';
     }
 }

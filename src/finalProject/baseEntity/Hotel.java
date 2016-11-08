@@ -2,7 +2,7 @@ package finalProject.baseEntity;
 
 import java.util.List;
 
-public class Hotel {
+public class Hotel implements Identity{
     private String name;
     private String city;
     private long id;

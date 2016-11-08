@@ -1,9 +1,11 @@
 package finalProject.DAO;
 
+import finalProject.baseEntity.Identity;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractDAOImpl <T> implements AbstractDAO<T> {
+public class AbstractDAOImpl <T extends Identity> implements AbstractDAO<T> {
 
     private List<T> listDAO = new ArrayList<>();
 
@@ -32,5 +34,15 @@ public class AbstractDAOImpl <T> implements AbstractDAO<T> {
     @Override
     public List<T> getList() {
         return listDAO;
+    }
+
+    @Override
+    public T getById(long id) {
+        for (T item : listDAO) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
     }
 }
