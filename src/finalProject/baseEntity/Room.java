@@ -38,6 +38,10 @@ public class Room implements Identity{
         return hotelId;
     }
 
+    public void setHotelId(long hotelId) {
+        this.hotelId = hotelId;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -61,7 +65,7 @@ public class Room implements Identity{
 
     @Override
     public String toString() {
-        return "\n" + "Room{" +
+        return "\n\t\t" + "Room{" +
                 "id = " + id +
                 ", persons = " + persons +
                 ", price = " + price +

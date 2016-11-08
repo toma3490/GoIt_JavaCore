@@ -57,7 +57,7 @@ public class Hotel implements Identity{
 
     @Override
     public String toString() {
-        return "Hotel{" +
+        return '\n' + "Hotel{" +
                 "name = '" + name + '\'' +
                 ", city = '" + city + '\'' +
                 ", id = " + id +

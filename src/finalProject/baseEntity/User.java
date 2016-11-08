@@ -10,6 +10,7 @@ public class User implements Identity{
         this.name = name;
         this.lastName = lastName;
         this.age = age;
+        this.id = -1;
     }
 
     public String getName() {
@@ -27,6 +28,10 @@ public class User implements Identity{
     @Override
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
@@ -54,11 +59,11 @@ public class User implements Identity{
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", id=" + id +
+        return '\n' + "User{" +
+                "name = '" + name + '\'' +
+                ", lastName = '" + lastName + '\'' +
+                ", age = " + age +
+                ", id = " + id +
                 '}';
     }
 }
