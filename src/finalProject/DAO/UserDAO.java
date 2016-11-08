@@ -5,5 +5,6 @@ import finalProject.baseEntity.User;
 import java.util.List;
 
 public interface UserDAO {
-    public List<User> getAllUsers();
+    List<User> getAllUsers();
+    boolean isRegistered(long userId);
 }

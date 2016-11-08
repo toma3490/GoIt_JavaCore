@@ -19,7 +19,7 @@ public class HotelDAOImpl extends AbstractDAOImpl<Hotel> implements HotelDAO{
         return instance;
     }
 
-    public HotelDAOImpl() {
+    private HotelDAOImpl() {
         hotels.add(new Hotel("Radisson", "Kiev", roomDAO.getRoomsList(0)));
         hotels.add(new Hotel("Hilton", "Kiev", roomDAO.getRoomsList(1)));
         hotels.add(new Hotel("The Beaumont", "London", roomDAO.getRoomsList(2)));

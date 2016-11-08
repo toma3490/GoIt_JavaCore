@@ -29,6 +29,17 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
     }
 
     @Override
+    public boolean isRegistered(long userId) {
+        boolean isRegistered = false;
+        for (User user : users) {
+            if (user.getId() == userId){
+                isRegistered = true;
+            }
+        }
+        return isRegistered;
+    }
+
+    @Override
     public void delete(User user) {
         users.remove(user);
     }

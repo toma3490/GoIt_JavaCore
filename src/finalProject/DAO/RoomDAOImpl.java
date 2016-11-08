@@ -63,6 +63,17 @@ public class RoomDAOImpl extends AbstractDAOImpl<Room> implements RoomDAO{
         return roomsLists;
     }
 
+    public boolean isReserved (long roomId){
+        for (List<Room> room: roomsLists) {
+            for (Room item : room) {
+                if (item.getId() == roomId) {
+                    return item.isReserved();
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public Room getById(long id) {
         for (List<Room> room: roomsLists) {

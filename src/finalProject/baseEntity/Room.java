@@ -7,6 +7,7 @@ public class Room implements Identity{
     private static long nextId = 0;
     private long userId;
     private long hotelId;
+    private boolean isReserved;
 
     public Room(int persons, int price) {
         this.persons = persons;
@@ -40,6 +41,14 @@ public class Room implements Identity{
 
     public void setHotelId(long hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
     }
 
     @Override
