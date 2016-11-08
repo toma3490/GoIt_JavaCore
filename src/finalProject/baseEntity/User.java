@@ -42,7 +42,6 @@ public class User implements Identity{
         User user = (User) object;
 
         if (age != user.age) return false;
-        if (id != user.id) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
 

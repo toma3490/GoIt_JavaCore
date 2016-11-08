@@ -52,17 +52,11 @@ public class Controller {
         }
         HotelDAOImpl hotelDAO = HotelDAOImpl.getInstance();
         List<Hotel> allHotels = hotelDAO.getHotelsList();
-        for (Hotel hotel : allHotels) {
-            if (hotelId == hotel.getId()) {
-                for (Room room : hotel.getRooms()) {
-                    if (roomId == room.getId()) {
-                        if (!room.isReserved()) {
-                            room.setReserved(true);
-                            room.setUserId(userId);
-                        }
-                    }
-                }
-            }
-        }
+        allHotels.stream().filter(hotel -> hotelId == hotel.getId()).forEach(hotel -> hotel.getRooms().stream().filter
+                        (room -> roomId == room.getId()).filter
+                        (room -> !room.isReserved()).forEach(room -> {
+            room.setReserved(true);
+            room.setUserId(userId);
+        }));
     }
 }

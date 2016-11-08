@@ -23,8 +23,17 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
 
     @Override
     public User save(User user) {
-        user.setId(++nextId);
-        users.add(user);
+        if (users.size() == 0){
+            user.setId(++nextId);
+            users.add(user);
+        }
+        for (int i = 0; i < users.size(); i++) {
+            if (!users.contains(user)){
+//                if (user.getAge() > AGE)
+                    user.setId(++nextId);
+                users.add(user);
+            }
+        }
         return user;
     }
 
