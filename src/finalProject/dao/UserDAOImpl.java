@@ -1,4 +1,4 @@
-package finalProject.DAO;
+package finalProject.dao;
 
 import finalProject.baseEntity.User;
 
@@ -11,6 +11,8 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
 
     private static List<User> users = new ArrayList<>();
     private static long nextId = 0;
+    private final int MIN_AGE = 18;
+    private final int MAX_AGE = 120;
 
     private static UserDAOImpl instance;
 
@@ -21,15 +23,22 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
         return instance;
     }
 
+    private boolean checkAge(User user){
+        boolean permission = true;
+        if (user.getAge() < MIN_AGE || user.getAge() > MAX_AGE){
+            permission = false;
+        }
+        return permission;
+    }
+
     @Override
     public User save(User user) {
-        if (users.size() == 0){
+        if (checkAge(user) && users.size() == 0){
             user.setId(++nextId);
             users.add(user);
         }
         for (int i = 0; i < users.size(); i++) {
-            if (!users.contains(user)){
-//                if (user.getAge() > AGE)
+            if (checkAge(user) && !users.contains(user)){
                     user.setId(++nextId);
                 users.add(user);
             }
@@ -39,13 +48,22 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
 
     @Override
     public boolean isRegistered(long userId) {
-        boolean isRegistered = false;
         for (User user : users) {
             if (user.getId() == userId){
-                isRegistered = true;
+                return user.isRegistered();
             }
         }
-        return isRegistered;
+        return false;
+    }
+
+    @Override
+    public User getById(long id) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;
     }
 
     @Override

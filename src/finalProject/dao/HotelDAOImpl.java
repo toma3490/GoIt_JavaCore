@@ -1,4 +1,4 @@
-package finalProject.DAO;
+package finalProject.dao;
 
 import finalProject.baseEntity.Hotel;
 import finalProject.baseEntity.Room;
@@ -66,5 +66,15 @@ public class HotelDAOImpl extends AbstractDAOImpl<Hotel> implements HotelDAO{
             }
         }
         return rooms;
+    }
+
+    @Override
+    public Hotel getById(long id) {
+        for (Hotel hotel : hotels) {
+            if (hotel.getId() == id) {
+                return hotel;
+            }
+        }
+        return null;
     }
 }

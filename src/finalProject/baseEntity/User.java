@@ -5,12 +5,12 @@ public class User implements Identity{
     private String lastName;
     private int age;
     private long id;
+    private boolean isRegistered;
 
     public User(String name, String lastName, int age) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.id = -1;
     }
 
     public String getName() {
@@ -34,6 +34,14 @@ public class User implements Identity{
         this.id = id;
     }
 
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
+    public void setRegistered(boolean registered) {
+        isRegistered = registered;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -52,7 +60,6 @@ public class User implements Identity{
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + age;
-        result = 31 * result + (int) (id ^ (id >>> 32));
         return result;
     }
 
@@ -64,5 +71,10 @@ public class User implements Identity{
                 ", age = " + age +
                 ", id = " + id +
                 '}';
+    }
+
+    public String shortToString(){
+        return " name = '" + name + '\'' +
+                ", lastName = '" + lastName + '\'';
     }
 }

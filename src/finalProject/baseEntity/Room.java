@@ -1,5 +1,7 @@
 package finalProject.baseEntity;
 
+import finalProject.dao.UserDAOImpl;
+
 public class Room implements Identity{
     private int persons;
     private int price;
@@ -7,7 +9,6 @@ public class Room implements Identity{
     private static long nextId = 0;
     private long userId;
     private long hotelId;
-    private boolean isReserved;
 
     public Room(int persons, int price) {
         this.persons = persons;
@@ -43,14 +44,6 @@ public class Room implements Identity{
         this.hotelId = hotelId;
     }
 
-    public boolean isReserved() {
-        return isReserved;
-    }
-
-    public void setReserved(boolean reserved) {
-        isReserved = reserved;
-    }
-
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -74,11 +67,20 @@ public class Room implements Identity{
 
     @Override
     public String toString() {
+        if (userId == 0){
+            return "\n\t\t" + "Room{" +
+                    "id = " + id +
+                    ", persons = " + persons +
+                    ", price = " + price +
+                    ", hotelId = " + hotelId +
+                    '}';
+        }
+        UserDAOImpl userDAO = new UserDAOImpl();
         return "\n\t\t" + "Room{" +
                 "id = " + id +
                 ", persons = " + persons +
                 ", price = " + price +
-                ", userId = " + userId +
+                ", userReserved:" + userDAO.getById(userId).shortToString() +
                 ", hotelId = " + hotelId +
                 '}';
     }

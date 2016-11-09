@@ -1,6 +1,5 @@
-package finalProject.DAO;
+package finalProject.dao;
 
-import finalProject.baseEntity.Hotel;
 import finalProject.baseEntity.Room;
 
 import java.util.ArrayList;
@@ -64,14 +63,15 @@ public class RoomDAOImpl extends AbstractDAOImpl<Room> implements RoomDAO{
     }
 
     public boolean isReserved (long roomId){
+        boolean isReserved = false;
         for (List<Room> room: roomsLists) {
             for (Room item : room) {
-                if (item.getId() == roomId) {
-                    return item.isReserved();
+                if (item.getUserId() != 0) {
+                    isReserved = true;
                 }
             }
         }
-        return false;
+        return isReserved;
     }
 
     @Override
