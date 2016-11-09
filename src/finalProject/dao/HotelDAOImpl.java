@@ -5,6 +5,7 @@ import finalProject.baseEntity.Room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HotelDAOImpl extends AbstractDAOImpl<Hotel> implements HotelDAO{
     RoomDAOImpl roomDAO = RoomDAOImpl.getInstance();
@@ -64,6 +65,16 @@ public class HotelDAOImpl extends AbstractDAOImpl<Hotel> implements HotelDAO{
             if (item.equals(hotel)){
                 rooms = item.getRooms();
             }
+        }
+        return rooms;
+    }
+
+    public List<Room> getAllNotReservedRooms(){
+        ArrayList<Room> rooms = new ArrayList<>();
+        for (Hotel hotel :
+                hotels) {
+            List<Room> roomsInHotel = hotel.getRooms().stream().filter(room -> room.getUserId() == 0).collect(Collectors.toList());
+            rooms.addAll(roomsInHotel);
         }
         return rooms;
     }

@@ -9,16 +9,12 @@ import finalProject.baseEntity.Hotel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
 
-    public Controller() {
-
-
-//        RoomDAOImpl roomDAO = new RoomDAOImpl();
-//        UserDAOImpl userDAO = new UserDAOImpl();
-    }
+    public Controller() {}
 
     public List<Hotel> findHotelByName(String name){
 
@@ -58,12 +54,12 @@ public class Controller {
         }
 
         if (roomDAO.isReserved(roomId)){
-            printError("This " + room + " is reserved already!");
+            printError(room + " is reserved already!");
             return;
         }
 
         room.setUserId(userId);
-        System.out.println("Room " + room + " in hotel " + hotel.getName() + " was successfully reserved");
+        System.out.println(room + " in hotel " + hotel.getName() + " was successfully reserved");
     }
 
     public void cancelReservation (long roomId, long userId, long hotelId){
@@ -81,7 +77,7 @@ public class Controller {
         }
 
         if (!roomDAO.isReserved(roomId)){
-            printError("This " + room + " isn't reserved yet!");
+            printError(room + " isn't reserved yet!");
             return;
         }
         if (room.getUserId() == userId){
@@ -91,7 +87,7 @@ public class Controller {
     }
 
     private boolean checkUser(long userId) {
-        UserDAOImpl userDao = new UserDAOImpl();
+        UserDAOImpl userDao = UserDAOImpl.getInstance();
         if (!userDao.isRegistered(userId)){
             printError("This " + userDao.getById(userId) + " isn't registered!");
             return true;
@@ -100,14 +96,93 @@ public class Controller {
     }
 
     public void registerUser(User user){
-        UserDAOImpl userDAO = new UserDAOImpl();
+        UserDAOImpl userDAO = UserDAOImpl.getInstance();
         if (userDAO.isRegistered(user.getId())){
             printError("This user " + user.shortToString() + " is registered already!");
             return;
         }
+        try{
+            if (userDAO.getAllUsers().contains(user)){
+                printError("This user " + user.shortToString() + " is already exist!");
+            }
+        }catch (NullPointerException e){
+            e.getMessage();
+        }
         userDAO.save(user);
         user.setRegistered(true);
     }
+
+    public List<User> getAllRegisteredUsers(){
+        UserDAOImpl userDAO = UserDAOImpl.getInstance();
+        List<User> allRegisteredUsers = new ArrayList<>();
+        List<User> allUsers = userDAO.getAllUsers();
+        for (User user : allUsers) {
+            if (user.isRegistered()){
+                allRegisteredUsers.add(user);
+            }
+        }
+        if (allRegisteredUsers.isEmpty()){
+            printError("There is no registered users");
+        }
+        return allRegisteredUsers;
+    }
+
+    public List<Room> findRoom(Map<String, String> params){
+        HotelDAOImpl hotelDAO = HotelDAOImpl.getInstance();
+        List<Room> rooms = new ArrayList<>();
+        List<Room> allFreeRooms = hotelDAO.getAllNotReservedRooms();
+
+        for (Room room : allFreeRooms) {
+            boolean isFound = checkParams(params, room);
+            if(isFound){
+                rooms.add(room);
+            }
+        }
+        if (rooms.isEmpty()){
+            printError("There is no rooms with such params");
+        }
+        return rooms;
+    }
+
+    private boolean checkParams(Map<String, String> params, Room room) {
+        List<Boolean> flags = new ArrayList<>();
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            if (entry.getKey().equals("persons")) {
+                int persons = Integer.parseInt(entry.getValue());
+                if (persons == room.getPersons()) {
+                    flags.add(true);
+                } else {
+                    flags.add(false);
+                }
+            }
+            if (entry.getKey().equals("price")) {
+                int price = Integer.parseInt(entry.getValue());
+                if (price == room.getPrice()) {
+                    flags.add(true);
+                } else {
+                    flags.add(false);
+                }
+            }
+            if (entry.getKey().equals("id")) {
+                long id = Long.parseLong(entry.getValue());
+                if (id == room.getId()) {
+                    flags.add(true);
+                } else {
+                    flags.add(false);
+                }
+            }
+            if (entry.getKey().equals("hotel")) {
+                Hotel hotel = findHotelByName(entry.getValue()).stream().findFirst().orElse(null);
+                if (hotel.equals(room.getHotelById(room.getHotelId()))) {
+                    flags.add(true);
+                } else {
+                    flags.add(false);
+                }
+            }
+        }
+        return flags.size() > 0 && flags.stream().allMatch(flag -> flag);
+    }
+
     private void printError(String message){
         System.out.println(message);
     }

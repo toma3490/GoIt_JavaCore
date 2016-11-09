@@ -1,5 +1,6 @@
 package finalProject.baseEntity;
 
+import finalProject.dao.HotelDAOImpl;
 import finalProject.dao.UserDAOImpl;
 
 public class Room implements Identity{
@@ -38,6 +39,11 @@ public class Room implements Identity{
 
     public long getHotelId() {
         return hotelId;
+    }
+
+    public Hotel getHotelById(long hotelId){
+        HotelDAOImpl hotelDAO = HotelDAOImpl.getInstance();
+        return hotelDAO.getById(hotelId);
     }
 
     public void setHotelId(long hotelId) {

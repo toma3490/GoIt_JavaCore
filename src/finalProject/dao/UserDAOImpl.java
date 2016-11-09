@@ -39,7 +39,7 @@ public class UserDAOImpl extends AbstractDAOImpl<User> implements UserDAO{
         }
         for (int i = 0; i < users.size(); i++) {
             if (checkAge(user) && !users.contains(user)){
-                    user.setId(++nextId);
+                user.setId(++nextId);
                 users.add(user);
             }
         }
